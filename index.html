@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>现场抽奖</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+</head>
+
+<body>
+
+    <!-- Dom here! -->
+    <div class="lottery"></div>
+
+    <!-- Zepto or jQuery -->
+    <script src="http://zeptojs.com/zepto.min.js"></script>
+
+    <!-- 库 -->
+    <script src="./js/move.min.js"></script>
+    <script src="./js/confetti.js"></script>
+
+    <!-- 本体 -->
+    <link rel="stylesheet" href="./css/lottery.css" />
+    <script src="./js/lottery.js"></script>
+
+    <!-- ROCK ON -->
+    <script>
+            $.lottery({
+                api:"./api.json",
+                once: true,
+                subtitle: "所在公司",
+                timeout: 10
+            });
+    </script>
+
+</body>
+
+</html>
