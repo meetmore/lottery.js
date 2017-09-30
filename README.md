@@ -10,7 +10,7 @@
 ![Preview2](https://i.loli.net/2017/09/27/59cbb05b88fae.jpg)
 
 LiveDemo->  
- [https://meetmore.github.io/lotteryScreen/](https://meetmore.github.io/lotteryScreen/)
+ [https://meetmore.github.io/lotteryScreen/index.html](https://meetmore.github.io/lotteryScreen/index.html)
    
 ## 特性
  - 灵活的使用方法
