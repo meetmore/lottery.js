@@ -152,6 +152,12 @@
   var lotteryInterval = null;
   var lotteryTimeout = null;
 
+  //缩放窗口时重新计算头像位置
+  $(window).resize(function() {
+    positionList = getAllPosition();
+    moveToTarget(currentTarget);
+  });
+
   getAllPosition = function() {
     return $.map($('.profile'), function(el, index) {
       return $(el).find('.avatar-image').first().offset();
