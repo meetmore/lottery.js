@@ -10,7 +10,7 @@
 <body>
 
     <!-- Dom here! -->
-    <div class="lottery"></div>
+    <div class="lotterybox"></div>
 
     <!-- Zepto or jQuery -->
     <script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
@@ -26,6 +26,7 @@
     <!-- ROCK ON -->
     <script>
             $.lottery({
+                el: '.lotterybox',
                 api:"./api.json",
                 once: true,
                 subtitle: "所在公司",

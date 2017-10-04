@@ -33,10 +33,7 @@ LiveDemo->
         ……
     ]
 
- 引入CSS和JS，预留一个div.lottery
-
-    <!-- Dom here! -->
-    <div class="lottery"></div>
+ 引入CSS和JS
 
     <!-- Zepto or jQuery -->
     <script src="http://zeptojs.com/zepto.min.js"></script>
@@ -58,11 +55,12 @@ Ready to go
 ## 参数
   
     $.lottery({ 
+        el: ".lottery",                           //在哪里输出抽奖的dom，使用jquery选择器
         timeout: 10,                              //抽奖自动停止时间（秒）
         once: true,                               //每人只能中奖一次（防止重复中奖）
         title: "你的职业",                         //中奖界面显示的标题 data[key]
         subtitle: "所在公司",                      //中奖界面显示的副标题 data[key]
-        api: 'http://example.com/lottery.json',   //API地址
+        api: "http://example.com/lottery.json",   //API地址
         data: {},                                 //直接传入用户对象（直接传入时请不要使用api参数）
         confetti: true,                           //中奖时候显示小彩带动画
         showbtn: true                             //显示抽奖控制按钮
@@ -70,6 +68,7 @@ Ready to go
   
  参数 | 说明 | 默认值 | 可选值
 ----|------|----|----
+el | 在哪里输出抽奖的dom  | body | 使用jquery选择器，例如”.lottery“
 timeout | 抽奖自动停止时间（秒）  | null | 10（整数，秒）
 once | 每个人只能抽取一次（不可重复中奖）  | false | true - 启用
 title | 中奖界面显示的标题  | 用户name属性 | user['data'][**key**]（附加数据属性中key内容）

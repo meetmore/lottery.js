@@ -1,14 +1,10 @@
-html {
-	overflow-y: auto
-}
 
 body {
 	margin: 0;
 	padding: 0;
-	background: #333
 }
 
-body, button, input, select, textarea {
+.lottery , .lottery button,.lottery  input,.lottery  select,.lottery  textarea {
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
@@ -21,16 +17,19 @@ body, button, input, select, textarea {
     -webkit-font-smoothing: antialiased;
     min-width: 300px;
 	overflow-x: hidden;
-    text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+	padding: 50px;
+	background: #333;
 }
 
 .lottery *{
+	background: #333
 	padding: 0;
 	margin: 0;
 	box-sizing: inherit;
 }
 
-canvas {
+.lottery canvas {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -39,31 +38,29 @@ canvas {
 	pointer-events: none;
 }
 
-.main-container {
-	padding: 50px
-}
-
-.avatar {
+.lottery .avatar {
 	text-align: center;
 	height: 128px;
 	width: 128px;
 }
 
-.avatar .image {
+.lottery .avatar .image {
 	margin: 0;
 	display: inline-block;
 	height: 128px;
 	width: 128px;
 }
 
-.avatar .image img {
+.lottery .avatar .image img {
 	border-radius: 100%;
 	height: 100%;
 	width: 100%;
 }
 
-#selector .image {
+.lottery #selector .image {
 	position: absolute;
+	left: 0;
+	top: 0;
 	border: 4px solid #FFF;
 	border-radius: 100%;
 	box-sizing: content-box;
@@ -72,13 +69,13 @@ canvas {
 	/*box-shadow: 0 0 100px 3000px rgba(10, 10, 10, 0.3);*/
 }
 
-.actions {
+.lottery .actions {
 	position: fixed;
 	right: 20px;
 	bottom: 20px
 }
 
-.actions .button {
+.lottery .actions .button {
 	display: block;
 	width: 128px;
 	height: 128px;
@@ -89,32 +86,32 @@ canvas {
 	cursor: hand;
 }
 
-.actions .button.primary{
+.lottery .actions .button.primary{
 	background-color: #00d1b2;
 	color: #fff;
 }
 
-.actions .button.primary:active,
-.actions .button.primary:hover{
+.lottery .actions .button.primary:active,
+.lottery .actions .button.primary:hover{
     background-color: #00c4a7;
     color: #fff;
 }
 
-.actions .button.success{
+.lottery .actions .button.success{
     background-color: #23d160;
     border-color: transparent;
     color: #fff;
 }
 
-.actions .button.success:active,
-.actions .button.success:hover{
+.lottery .actions .button.success:active,
+.lottery .actions .button.success:hover{
     background-color: #20bc56;
     border-color: transparent;
     box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
     color: #fff;
 }
 
-.modal-close {
+.lottery .modal-close {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -141,7 +138,7 @@ canvas {
 	width: 40px;
   }
   
-  .modal-close:before, .modal-close:after {
+  .lottery .modal-close:before, .modal-close:after {
 	background-color: white;
 	content: "";
 	display: block;
@@ -154,26 +151,26 @@ canvas {
 			transform-origin: center center;
   }
   
-  .modal-close:before {
+  .lottery .modal-close:before {
 	height: 2px;
 	width: 50%;
   }
   
-  .modal-close:after {
+  .lottery .modal-close:after {
 	height: 50%;
 	width: 2px;
   }
   
-  .modal-close:hover, .modal-close:focus {
+  .lottery .modal-close:hover, .lottery .modal-close:focus {
 	background-color: rgba(10, 10, 10, 0.3);
   }
   
-  .modal-close:active {
+  .lottery .modal-close:active {
 	background-color: rgba(10, 10, 10, 0.4);
   }
   
 
-.modal {
+  .lottery .modal {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -194,7 +191,7 @@ canvas {
 	transition: all .2s ease-in;
 }
 
-.modal.is-active {
+.lottery .modal.is-active {
 	opacity: 1;
 	z-index: 1;
 	display: -webkit-box;
@@ -202,7 +199,7 @@ canvas {
     display: flex;
 }
 
-.modal-background {
+.lottery .modal-background {
 	bottom: 0;
     left: 0;
     position: absolute;
@@ -212,14 +209,14 @@ canvas {
 	background-color: rgba(10,10,10,0.8)
 }
 
-.modal-content {
+.lottery .modal-content {
 	text-align: center;
 	margin: 0 auto;
     max-height: calc(100vh - 40px);
     width: 640px;
 }
 
-.modal-content>h1 {
+.lottery .modal-content>h1 {
 	font-size: 128px;
 	z-index: 2;
 	position: relative;
@@ -231,7 +228,7 @@ canvas {
 	margin-top: -40px
 }
 
-.modal-content .avatar-image>img {
+.lottery .modal-content .avatar-image>img {
 	width: 200px;
 	height: 200px;
 	border-radius: 128px;
@@ -240,23 +237,23 @@ canvas {
 	box-sizing: content-box
 }
 
-.modal-content .profile-name {
+.lottery .modal-content .profile-name {
 	font-size: 64px;
 	color: #eee;
 	margin-top: 16px
 }
 
-.modal-content .profile-subtitle {
+.lottery .modal-content .profile-subtitle {
 	color: #ddd;
 	font-size: 42px
 }
 
-.modal-close {
+.lottery .modal-close {
 	height: 86px;
 	width: 86px
 }
 
-.columns{
+.lottery .columns{
 	display: -webkit-box;
     display: -ms-flexbox;
 	display: flex;
@@ -264,7 +261,7 @@ canvas {
 	flex-wrap: wrap;
 }
 
-.column {
+.lottery .column {
 	flex: 1 0 auto;
 	display: block;
     -ms-flex-preferred-size: 0;

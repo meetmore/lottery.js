@@ -32,10 +32,7 @@ LiveDemo->
         ……
     ]
 
- import CSS/JS, Prepare an element div.lottery
-
-    <!-- Dom here! -->
-    <div class="lottery"></div>
+ import CSS/JS
 
     <!-- Zepto or jQuery -->
     <script src="http://zeptojs.com/zepto.min.js"></script>
@@ -56,6 +53,7 @@ LiveDemo->
 ## Config
   
     $.lottery({ 
+        el: ".lottery",                           //where we put dom，jquery selector
         timeout: 10,                              //time to auto stop（second）
         once: true,                               //winner can not repeatable
         title: "YourJob",                         //the title will show in winner screen data[key]
@@ -68,6 +66,7 @@ LiveDemo->
   
  Parameter | Explain | Default | Optional
 ----|------|----|----
+el | where we put dom  | body | jquery selector，e.g.”.lottery“
 timeout | time to auto stop（second）  | null | 10 (int，second)
 once | winner can not repeatable  | false | true (enable)
 title | the title will show in winner screen  | user['name'] | user['data'][**key**] (key content in data fields)

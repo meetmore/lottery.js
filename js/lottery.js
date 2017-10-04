@@ -9,14 +9,18 @@
     api: null,
     confetti: true,
     showbtn: true,
+    el: "body",
 
     data: {},
     winners: {},
-    $el: $(".lottery")
+    $el: null
   }
 
   //生成dom
   var initDom = function(dom){
+    var box = $("\
+      <div class='lottery'></div>\
+    ");
     //中奖用户高亮
     var selector = $("\
       <div id='selector' style='display: none'>\
@@ -54,10 +58,11 @@
         <button class='modal-close'></button>\
       </div>\
     ");
-    dom.append(selector);
-    dom.append(container);
-    dom.append(modal);
-    if(settings.showbtn) dom.append(btn);
+    box.append(selector);
+    box.append(container);
+    box.append(modal);
+    if(settings.showbtn) box.append(btn);
+    dom.append(box);
 
     //注册dom事件
     $('#go').click(function() {
@@ -127,6 +132,7 @@
 
   //一些微小的准备工作
   var readyLottery = function(){
+    settings.$el = $(settings.el);
     initDom(settings.$el);
     $.each(settings.data, function(index,item){
       item['id'] = index;  //为每个用户添加一个唯一id
@@ -140,11 +146,11 @@
     if(settings.confetti) window.readyConfetti();
   }
   
-  positionList = [];
-  currentTarget = null;
-  winnerProfile = null;
-  lotteryInterval = null;
-  lotteryTimeout = null;
+  var positionList = [];
+  var currentTarget = null;
+  var winnerProfile = null;
+  var lotteryInterval = null;
+  var lotteryTimeout = null;
 
   getAllPosition = function() {
     return $.map($('.profile'), function(el, index) {
