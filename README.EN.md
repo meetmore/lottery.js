@@ -5,7 +5,7 @@
 [Chinese README](https://github.com/meetmore/lotteryScreen/blob/master/README.md)  
 
 ## 预览
-![Preview](https://i.loli.net/2017/10/04/59d4a18ec058b.gif) 
+![Preview](https://i.loli.net/2017/10/08/59d90309c7de9.gif) 
 
 LiveDemo->  
  [https://meetmore.github.io/lotteryScreen/index.html](https://meetmore.github.io/lotteryScreen/index.html)
