@@ -152,7 +152,7 @@
     //通过窗口预测一个合适大小
     var win_size = $(window).height() * $(window).width();
     var number = settings.data.length;
-    var item_side = Math.round(Math.sqrt(win_size/number)/1.5);
+    var item_side = Math.round(Math.sqrt(win_size/number)/1.4);
     set_itemsize(item_side);
     
     //如果溢出窗口面积则尝试减小

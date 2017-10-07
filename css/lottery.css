@@ -76,12 +76,12 @@ body {
 
 .lottery .actions .button {
 	display: block;
-	width: 128px;
-	height: 128px;
-	line-height: 128px;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
 	text-align: center;
-	border-radius: 128px;
-	font-size: 64px;
+	border-radius: 80px;
+	font-size: 40px;
 	cursor: hand;
 }
 
@@ -270,5 +270,5 @@ body {
     flex-grow: 1;
     -ms-flex-negative: 1;
     flex-shrink: 1;
-    padding: 1.5%;
+    padding: 1vw;
 }
