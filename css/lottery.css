@@ -2,6 +2,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	background: #333;
 }
 
 .lottery , .lottery button,.lottery  input,.lottery  select,.lottery  textarea {
@@ -18,7 +19,7 @@ body {
     min-width: 300px;
 	overflow-x: hidden;
 	text-rendering: optimizeLegibility;
-	padding: 50px;
+	padding: 4%;
 	background: #333;
 }
 
@@ -40,8 +41,6 @@ body {
 
 .lottery .avatar {
 	text-align: center;
-	height: 128px;
-	width: 128px;
 }
 
 .lottery .avatar .image {
@@ -271,5 +270,5 @@ body {
     flex-grow: 1;
     -ms-flex-negative: 1;
     flex-shrink: 1;
-    padding: 0.75rem;
+    padding: 1.5%;
 }

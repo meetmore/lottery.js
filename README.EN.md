@@ -61,7 +61,8 @@ LiveDemo->
         api: 'http://example.com/lottery.json',   //API URL
         data: {},                                 //directly use userdata object (when use this, keep api empty)
         confetti: true,                           //show confetti effects
-        showbtn: true                             //show control button
+        showbtn: true,                            //show control button
+        fitsize: true                             //show all user in one screen
     });
   
  Parameter | Explain | Default | Optional
@@ -75,6 +76,7 @@ api | API JSON URL  | null | URL
 data | directly use userdata object (when use this, keep api empty)  | null | Object
 confetti | show confetti effects (if disable, confetti.js is not required)  | true | false
 showbtn | show control button  | true | false
+fitsize | fit user avatar size to show all user in one screen  | true | false
   
 ## API
 

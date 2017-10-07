@@ -10,6 +10,7 @@
     confetti: true,
     showbtn: true,
     el: "body",
+    fitsize: true,
 
     data: {},
     winners: {},
@@ -143,7 +144,31 @@
       positionList = getAllPosition();
       return moveToTarget(0);
     }, 1000);
+    if(settings.fitsize) fitsize();
     if(settings.confetti) window.readyConfetti();
+  }
+
+  var fitsize = function(){
+    //通过窗口预测一个合适大小
+    var win_size = $(window).height() * $(window).width();
+    var number = settings.data.length;
+    var item_side = Math.round(Math.sqrt(win_size/number)/1.5);
+    set_itemsize(item_side);
+    
+    //如果溢出窗口面积则尝试减小
+    while ( !($(window).height() >= $(".lottery").height()) || !($(window).width() >= $(".lottery").width()) ) {
+      if(item_side<10) break;
+      item_side = item_side - 2;
+      set_itemsize(item_side);
+    }
+  }
+
+  //设置元素大小
+  var set_itemsize = function(item_side){
+    $(".lottery .avatar .image").css('height',item_side+'px');
+    $(".lottery .avatar .image").css('width',item_side+'px');
+    $(".lottery #selector .image").css('height',item_side+'px');
+    $(".lottery #selector .image").css('width',item_side+'px');
   }
   
   var positionList = [];
@@ -156,6 +181,7 @@
   $(window).resize(function() {
     positionList = getAllPosition();
     moveToTarget(currentTarget);
+    if(settings.fitsize) fitsize();
   });
 
   getAllPosition = function() {

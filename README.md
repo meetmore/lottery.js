@@ -63,7 +63,8 @@ Ready to go
         api: "http://example.com/lottery.json",   //API地址
         data: {},                                 //直接传入用户对象（直接传入时请不要使用api参数）
         confetti: true,                           //中奖时候显示小彩带动画
-        showbtn: true                             //显示抽奖控制按钮
+        showbtn: true,                            //显示抽奖控制按钮
+        fitsize: true                             //在一屏幕中显示所有抽奖者
     });
   
  参数 | 说明 | 默认值 | 可选值
@@ -77,6 +78,7 @@ api | 传入一个抽奖用户地址，json格式  | null | URL
 data | 直接传入用户对象（直接传入时请不要使用api参数）  | null | Object
 confetti | 中奖时候显示小彩带动画（如果这里不启用，可以不引入confetti.js）  | true | false
 showbtn | 是否显示抽奖控制按钮  | true | false
+fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
   
 ## API
 
