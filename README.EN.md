@@ -18,18 +18,20 @@
 
  Prepare an API like this
  
+```js
     [
         {
             "avatar": "//example.com/avatar_1.jpg", 
             "name": "MeetMore",
             "data": {
-                "YourJob": "Front-End Developer",
-                "Company": "xx Unoion Company",
+                "title": "Front-End Developer",
+                "company": "Little Apple",
                 ……
             }
         },
         ……
     ]
+```
 
  import CSS/JS
 
@@ -55,16 +57,16 @@
 
 ```js
     $.lottery({ 
-        el: ".lottery",                           //where we put dom，jquery selector
-        timeout: 10,                              //time to auto stop（second）
-        once: true,                               //winner can not repeatable
-        title: "YourJob",                         //the title will show in winner screen data[key]
-        subtitle: "Company",                      //the subtitle will show in winner screen data[key]
-        api: 'http://example.com/lottery.json',   //API URL
-        data: {},                                 //directly use userdata object (when use this, keep api empty)
-        confetti: true,                           //show confetti effects
-        showbtn: true,                            //show control button
-        fitsize: true                             //show all user in one screen
+        el: ".lottery",                           // where we put dom，jquery selector
+        timeout: 10,                              // time to auto stop（second）
+        once: true,                               // winner can not repeatable
+        title: "company",                         // the title will show in winner screen data[key]
+        subtitle: "title",                        // the subtitle will show in winner screen data[key]
+        api: 'http://example.com/lottery.json',   // API URL
+        data: {},                                 // directly use userdata object (when use this, keep api empty)
+        confetti: true,                           // show confetti effects
+        showbtn: true,                            // show control button
+        fitsize: true                             // show all user in one screen
     });
 ```
 
@@ -83,10 +85,13 @@ fitsize | fit user avatar size to show all user in one screen  | true | false
   
 ## API
 
+
+```js
     $.lottery('start'); 
     $.lottery('stop');
     $.lottery('getUsers'); 
     $.lottery('getWinners');
+```
 
  Parameter | Explain | Return
 ----|------|----

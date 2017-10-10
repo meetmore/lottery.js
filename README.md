@@ -2,7 +2,7 @@
 
 🎲 一个简单的抽奖屏幕，基于Zepto或jQuery，支持各种自定义姿势，快速便捷接入现有系统。
 
-[ENGLISH README](https://github.com/meetmore/lotteryScreen/blob/master/README.EN.md)  
+[English README](https://github.com/meetmore/lotteryScreen/blob/master/README.EN.md)  
 
 ## 预览
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
@@ -18,12 +18,12 @@
 
 准备一个参与抽奖者的数据
 
- ```json
+ ```js
     [
         {
-            "avatar": "//example.com/avatar_1.jpg",  // 头像图片地址
-            "name": "MeetMore",                         // 名字
-            "data": {                                //该用户额外数据
+            "avatar": "//example.com/avatar_1.jpg",    // 头像图片地址
+            "name": "MeetMore",                        // 名字
+            "data": {                                  // 该用户额外数据
                 "company": "MeetMore Inc.",
                 "title": "CEO",
                 ...
@@ -58,8 +58,8 @@ Ready to go
         el: ".lottery",                           // 在哪里输出抽奖的dom，使用jquery选择器
         timeout: 10,                              // 抽奖自动停止时间（秒）
         once: true,                               // 每人只能中奖一次（防止重复中奖）
-        title: "你的职业",                         // 中奖界面显示的标题 data[key]
-        subtitle: "所在公司",                      // 中奖界面显示的副标题 data[key]
+        title: "company",                         // 中奖界面显示的标题 data[key]
+        subtitle: "title",                        // 中奖界面显示的副标题 data[key]
         api: "http://example.com/lottery.json",   // 抽奖者数据 API 地址（非必填，若填写则 data 参数将被忽略）
         data: [],                                 // 直接传入抽奖者数据
         confetti: true,                           // 中奖时候显示小彩带动画
@@ -84,9 +84,9 @@ fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
 ## API
 
 ```js
-    $.lottery('start'); // 开始抽奖
-    $.lottery('stop'); // 停止抽奖
-    $.lottery('getUsers'); // 获取用户列表
+    $.lottery('start');      // 开始抽奖
+    $.lottery('stop');       // 停止抽奖
+    $.lottery('getUsers');   // 获取用户列表
     $.lottery('getWinners'); // 获取中奖用户列表
 ```
 
