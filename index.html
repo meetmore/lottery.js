@@ -1,36 +1,38 @@
 <html>
-
 <head>
-    <title>现场抽奖</title>
+    <title>Lottery</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
     <meta name="format-detection" content="telephone=no" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .lotterybox{
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
-
-    <!-- Dom here! -->
     <div class="lotterybox"></div>
-
+    
     <!-- Zepto or jQuery -->
-    <script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
 
-    <!-- 库 -->
-    <script src="./js/move.min.js"></script>
-    <script src="./js/confetti.js"></script>
-
-    <!-- 本体 -->
-    <link rel="stylesheet" href="./css/lottery.css" />
-    <script src="./js/lottery.js"></script>
+    <link rel="stylesheet" href="./dist/lottery.min.css" />
+    <script src="./dist/lottery.compact.min.js"></script>
 
     <!-- ROCK ON -->
     <script>
             $.lottery({
                 el: '.lotterybox',
-                api:"./api.json",
-                once: true,
-                subtitle: "所在公司",
-                timeout: 10
+                api: './sample-data.json',
+                once: false,
+                subtitle: "company",
+                // desc: "title",
+                timeout: 20
             });
     </script>
 

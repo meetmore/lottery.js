@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/gulp"
+  },
+  "name": "lottery-screen.js",
+  "version": "1.0.0",
+  "description": "A web lottery screen that easy to use, base on Zepto or jQuery, with custom data support.",
+  "main": "dist/lottery.compact.min.js",
+  "repository": "git@github.com:meetmore/lotteryScreen.git",
+  "author": "NekoTora <i@flag.moe> Sun Liang <unstop01@gmail.com>",
+  "license": "Apache License 2.0",
+  "private": false
+}

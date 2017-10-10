@@ -103,6 +103,7 @@
         return $('.dh-modal-close').click();
       }
       if (e.keyCode == 32) {
+        if ($('#dh-lottery-winner').hasClass('is-active')) return;
         return $('#dh-lottery-go').click();
       }
     };
