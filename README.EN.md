@@ -99,3 +99,9 @@ getWinners | get winners list | Object，Winnerslist
 ## License
 
 - Apache License 2.0
+
+## Credits
+
+- confetti.js is created by [Javier Sosa](http://jsfiddle.net/Javalsu/vxP5q/743/)
+- Icons are created by [Okay: Yasir B. Eryılmaz](https://thenounproject.com/term/okay/114615/), [Crown: Pundimon](https://thenounproject.com/term/crown/1028402), [Dice: davidyu](https://thenounproject.com/term/dice-point-4/1250653/) from the Noun Project
+- Move.js is created by [TJ Holowaychuk](https://visionmedia.github.io/move.js/)
