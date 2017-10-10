@@ -1,6 +1,6 @@
 ## Lottery.js
 
-🎲 A web lottery screen that easy to use, base on Zepto or jQuery, with custom data support.
+🎲 A simple javascript lottery app.
 
 [Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.md)  
 
@@ -106,7 +106,7 @@ getWinners | get winners list | Object，Winnerslist
    
 ## License
 
-- Apache License 2.0
+Copyright © Duohui.co - Apache License 2.0
 
 ## Credits
 
