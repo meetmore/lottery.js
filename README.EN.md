@@ -4,11 +4,10 @@
 
 [Chinese README](https://github.com/meetmore/lotteryScreen/blob/master/README.md)  
 
-## 预览
-![Preview](https://i.loli.net/2017/10/08/59d90309c7de9.gif) 
+## Screenshots
+![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
 
-LiveDemo->  
- [https://meetmore.github.io/lotteryScreen/index.html](https://meetmore.github.io/lotteryScreen/index.html)
+### [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
    
 ## Features
  - Flexible

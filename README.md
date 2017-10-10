@@ -5,10 +5,9 @@
 [ENGLISH README](https://github.com/meetmore/lotteryScreen/blob/master/README.EN.md)  
 
 ## 预览
-![Preview](https://i.loli.net/2017/10/08/59d90309c7de9.gif) 
+![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
 
-LiveDemo->  
- [https://meetmore.github.io/lotteryScreen/index.html](https://meetmore.github.io/lotteryScreen/index.html)
+### [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
    
 ## 特性
  - 灵活的使用方法
