@@ -1,15 +1,7 @@
-
-body {
+.dh-lottery {
 	margin: 0;
-	padding: 0;
 	background: #333;
-}
-
-.lottery , .lottery button,.lottery  input,.lottery  select,.lottery  textarea {
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
-
-.lottery{
+    font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	color: #4a4a4a;
     font-size: 16px;
     font-weight: 400;
@@ -17,20 +9,56 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     min-width: 300px;
-	overflow-x: hidden;
 	text-rendering: optimizeLegibility;
 	padding: 4%;
-	background: #333;
+	min-height: 100%;
+    box-sizing: border-box;
 }
 
-.lottery *{
-	background: #333
+.dh-lottery *{
 	padding: 0;
 	margin: 0;
 	box-sizing: inherit;
 }
 
-.lottery canvas {
+.dh-icon {
+		font-style: normal;
+		font-size: 0;
+	}
+
+	.dh-icon > svg {
+		height: 52px;
+		width: 52px;
+		color: #FFC825;
+		margin: 14px;
+	}
+
+	.is-mac .dh-icon-dice {
+		line-height: 105px;
+	}
+
+	.dh-icon-dice > svg {
+		color: #fff;
+	}
+
+	.dh-icon-okay > svg {
+		color: #FFD860;
+	}
+
+	.dh-icon-crown > svg {
+		margin: 8px;
+		height: 200px;
+		width: 120px;
+	}
+
+	.is-mac .dh-icon {
+		font-size: 1em;
+	}
+	.is-mac .dh-icon > svg {
+		display: none;
+	}
+
+.dh-lottery canvas {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -39,24 +67,24 @@ body {
 	pointer-events: none;
 }
 
-.lottery .avatar {
+.dh-lottery .avatar {
 	text-align: center;
 }
 
-.lottery .avatar .image {
+.dh-lottery .avatar .image {
 	margin: 0;
 	display: inline-block;
 	height: 128px;
 	width: 128px;
 }
 
-.lottery .avatar .image img {
+.dh-lottery .avatar .image img {
 	border-radius: 100%;
 	height: 100%;
 	width: 100%;
 }
 
-.lottery #selector .image {
+#dh-lottery-selector .image {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -68,49 +96,70 @@ body {
 	/*box-shadow: 0 0 100px 3000px rgba(10, 10, 10, 0.3);*/
 }
 
-.lottery .actions {
-	position: fixed;
+.dh-lottery .actions {
+	position: absolute;
 	right: 20px;
 	bottom: 20px
 }
 
-.lottery .actions .button {
+.dh-lottery .actions .button {
 	display: block;
-	width: 80px;
-	height: 80px;
-	line-height: 80px;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
 	text-align: center;
 	border-radius: 80px;
-	font-size: 40px;
+	font-size: 56px;
 	cursor: hand;
 }
 
-.lottery .actions .button.primary{
+.dh-lottery .actions .button.primary{
 	background-color: #00d1b2;
 	color: #fff;
 }
 
-.lottery .actions .button.primary:active,
-.lottery .actions .button.primary:hover{
+.dh-lottery .actions .button.primary:active,
+.dh-lottery .actions .button.primary:hover{
     background-color: #00c4a7;
     color: #fff;
 }
 
-.lottery .actions .button.success{
+.dh-lottery .actions .button.success{
     background-color: #23d160;
     border-color: transparent;
     color: #fff;
 }
 
-.lottery .actions .button.success:active,
-.lottery .actions .button.success:hover{
+.dh-lottery .actions .button.success:active,
+.dh-lottery .actions .button.success:hover{
     background-color: #20bc56;
     border-color: transparent;
     box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
     color: #fff;
 }
 
-.lottery .modal-close {
+.dh-lottery .columns{
+	display: -webkit-box;
+    display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.dh-lottery .column {
+	flex: 1 0 auto;
+	display: block;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    padding: 1vw;
+}
+
+.dh-modal-close {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -137,7 +186,7 @@ body {
 	width: 40px;
   }
   
-  .lottery .modal-close:before, .modal-close:after {
+  .dh-modal-close:before, .dh-modal-close:after {
 	background-color: white;
 	content: "";
 	display: block;
@@ -150,26 +199,26 @@ body {
 			transform-origin: center center;
   }
   
-  .lottery .modal-close:before {
+  .dh-modal-close:before {
 	height: 2px;
 	width: 50%;
   }
   
-  .lottery .modal-close:after {
+  .dh-modal-close:after {
 	height: 50%;
 	width: 2px;
   }
   
-  .lottery .modal-close:hover, .lottery .modal-close:focus {
+  .dh-modal-close:hover, .dh-modal-close:focus {
 	background-color: rgba(10, 10, 10, 0.3);
   }
   
-  .lottery .modal-close:active {
+  .dh-modal-close:active {
 	background-color: rgba(10, 10, 10, 0.4);
   }
   
 
-  .lottery .modal {
+  .dh-modal {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -190,15 +239,15 @@ body {
 	transition: all .2s ease-in;
 }
 
-.lottery .modal.is-active {
+.dh-modal.is-active {
 	opacity: 1;
-	z-index: 1;
+	z-index: 99999;
 	display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }
 
-.lottery .modal-background {
+.dh-modal-background {
 	bottom: 0;
     left: 0;
     position: absolute;
@@ -208,18 +257,18 @@ body {
 	background-color: rgba(10,10,10,0.8)
 }
 
-.lottery .modal-content {
+.dh-modal-content {
 	text-align: center;
 	margin: 0 auto;
     max-height: calc(100vh - 40px);
     width: 640px;
 }
 
-.lottery .modal-content>h1 {
+.dh-modal-content>h1 {
 	font-size: 128px;
 	z-index: 2;
 	position: relative;
-	transform: rotate(6deg);
+	transform: rotate(5deg);
 	overflow: hidden;
 	width: 160px;
 	margin: 0 auto;
@@ -227,48 +276,37 @@ body {
 	margin-top: -40px
 }
 
-.lottery .modal-content .avatar-image>img {
+.dh-modal-content .avatar-image>img {
 	width: 200px;
 	height: 200px;
 	border-radius: 128px;
 	margin-top: -72px;
-	border: 6px solid #e4bb3c;
+	border: 6px solid #FFC825;
 	box-sizing: content-box
 }
 
-.lottery .modal-content .profile-name {
+.dh-modal-content .profile-name {
 	font-size: 64px;
 	color: #eee;
-	margin-top: 16px
+	margin: 16px 0;
+	font-weight: 600;
 }
 
-.lottery .modal-content .profile-subtitle {
+.dh-modal-content .profile-subtitle {
 	color: #ddd;
-	font-size: 42px
+	font-size: 42px;
+	margin: 12px 0;
+	font-weight: 600;
 }
 
-.lottery .modal-close {
+.dh-modal-content .profile-desc {
+	color: #ddd;
+	font-size: 32px;
+	margin: 8px 0;
+	font-weight: 600;
+}
+
+.dh-modal-close {
 	height: 86px;
 	width: 86px
-}
-
-.lottery .columns{
-	display: -webkit-box;
-    display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-}
-
-.lottery .column {
-	flex: 1 0 auto;
-	display: block;
-    -ms-flex-preferred-size: 0;
-    flex-basis: 0;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -ms-flex-negative: 1;
-    flex-shrink: 1;
-    padding: 1vw;
 }
