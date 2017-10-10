@@ -1,13 +1,13 @@
-## MeetMore lotteryScreen
+## Lottery.js
 
 🎲 A web lottery screen that easy to use, base on Zepto or jQuery, with custom data support.
 
-[Chinese README](https://github.com/meetmore/lotteryScreen/blob/master/README.md)  
+[Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.md)  
 
 ## Screenshots
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
 
-## [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
+## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
    
 ## Features
  - Flexible

@@ -1,13 +1,13 @@
-## 多会抽奖屏幕
+## Lottery.js
 
-🎲 一个简单的抽奖屏幕，基于Zepto或jQuery，支持各种自定义姿势，快速便捷接入现有系统。
+🎲 一个简单的 Javascript 抽奖应用，基于 Zepto 或 jQuery，快速便捷接入现有系统。
 
-[English README](https://github.com/meetmore/lotteryScreen/blob/master/README.EN.md)  
+[English README](https://github.com/meetmore/lottery.js/blob/master/README.EN.md)  
 
 ## 预览
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
 
-## [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
+## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
    
 ## 特性
  - 灵活的使用方法
