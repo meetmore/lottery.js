@@ -1,13 +1,13 @@
 ## MeetMore lotteryScreen
 
-🎲 A h5 lottery screen that easy to use, base on Zepto or jQuery, with custom fields spport.
+🎲 A web lottery screen that easy to use, base on Zepto or jQuery, with custom data support.
 
 [Chinese README](https://github.com/meetmore/lotteryScreen/blob/master/README.md)  
 
 ## Screenshots
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
 
-### [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
+## [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
    
 ## Features
  - Flexible
@@ -33,24 +33,27 @@
 
  import CSS/JS
 
+```html
     <!-- Zepto or jQuery -->
     <script src="http://zeptojs.com/zepto.min.js"></script>
 
-    <!-- import other resources -->
-    <script src="./js/move.min.js"></script>
-    <script src="./js/confetti.js"></script>
-
-    <link rel="stylesheet" href="./css/lottery.css" />
-    <script src="./js/lottery.js"></script>
+    <link rel="stylesheet" href="./lottery.min.css" />
+    <script src="./lottery.compact.min.js"></script>
+```
 
  Call function and Ready to go
 
+
+```js
     $.lottery({ 
         api:"./api.json" 
     });
-  
+```
+
 ## Config
-  
+
+
+```js
     $.lottery({ 
         el: ".lottery",                           //where we put dom，jquery selector
         timeout: 10,                              //time to auto stop（second）
@@ -63,7 +66,8 @@
         showbtn: true,                            //show control button
         fitsize: true                             //show all user in one screen
     });
-  
+```
+
  Parameter | Explain | Default | Optional
 ----|------|----|----
 el | where we put dom  | body | jquery selector，e.g.”.lottery“

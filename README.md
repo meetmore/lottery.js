@@ -7,7 +7,7 @@
 ## 预览
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
 
-### [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
+## [LiveDemo ->](https://meetmore.github.io/lotteryScreen/)
    
 ## 特性
  - 灵活的使用方法
@@ -16,56 +16,58 @@
    
 ## 使用
 
- 准备一个科学的API
- 
+准备一个参与抽奖者的数据
+
+ ```json
     [
         {
-            "avatar": "//example.com/avatar_1.jpg",  //头像图片地址
-            "name": "李狗蛋",                         //名字
+            "avatar": "//example.com/avatar_1.jpg",  // 头像图片地址
+            "name": "MeetMore",                         // 名字
             "data": {                                //该用户额外数据
-                "所在公司": "英国可厉害了科技有限公司",
-                "你的职业": "产品喵",
-                "豆腐脑吃甜吃咸": "咸党",
-                ……
+                "company": "MeetMore Inc.",
+                "title": "CEO",
+                ...
             }
         },
         ……
     ]
+```
 
- 引入CSS和JS
+在页面中引入 CSS 和 JS
 
+```html
     <!-- Zepto or jQuery -->
     <script src="http://zeptojs.com/zepto.min.js"></script>
 
-    <!-- 库 -->
-    <script src="./js/move.min.js"></script>
-    <script src="./js/confetti.js"></script>
-
-    <!-- 本体 -->
-    <link rel="stylesheet" href="./css/lottery.css" />
-    <script src="./js/lottery.js"></script>
+    <link rel="stylesheet" href="./lottery.min.css" />
+    <script src="./lottery.compact.min.js"></script>
+```
 
 Ready to go
 
+```js
     $.lottery({ 
         api:"./api.json" 
     });
+```
   
 ## 参数
-  
+
+```js
     $.lottery({ 
-        el: ".lottery",                           //在哪里输出抽奖的dom，使用jquery选择器
-        timeout: 10,                              //抽奖自动停止时间（秒）
-        once: true,                               //每人只能中奖一次（防止重复中奖）
-        title: "你的职业",                         //中奖界面显示的标题 data[key]
-        subtitle: "所在公司",                      //中奖界面显示的副标题 data[key]
-        api: "http://example.com/lottery.json",   //API地址
-        data: {},                                 //直接传入用户对象（直接传入时请不要使用api参数）
-        confetti: true,                           //中奖时候显示小彩带动画
-        showbtn: true,                            //显示抽奖控制按钮
-        fitsize: true                             //在一屏幕中显示所有抽奖者
+        el: ".lottery",                           // 在哪里输出抽奖的dom，使用jquery选择器
+        timeout: 10,                              // 抽奖自动停止时间（秒）
+        once: true,                               // 每人只能中奖一次（防止重复中奖）
+        title: "你的职业",                         // 中奖界面显示的标题 data[key]
+        subtitle: "所在公司",                      // 中奖界面显示的副标题 data[key]
+        api: "http://example.com/lottery.json",   // 抽奖者数据 API 地址（非必填，若填写则 data 参数将被忽略）
+        data: [],                                 // 直接传入抽奖者数据
+        confetti: true,                           // 中奖时候显示小彩带动画
+        showbtn: true,                            // 显示抽奖控制按钮
+        fitsize: true                             // 根据屏幕大小自动调整头像大小
     });
-  
+```
+
  参数 | 说明 | 默认值 | 可选值
 ----|------|----|----
 el | 在哪里输出抽奖的dom  | body | 使用jquery选择器，例如”.lottery“
@@ -81,10 +83,12 @@ fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
   
 ## API
 
-    $.lottery('start'); //开始抽奖
-    $.lottery('stop'); //停止抽奖
-    $.lottery('getUsers'); //获取用户列表
-    $.lottery('getWinners'); //获取中奖用户列表
+```js
+    $.lottery('start'); // 开始抽奖
+    $.lottery('stop'); // 停止抽奖
+    $.lottery('getUsers'); // 获取用户列表
+    $.lottery('getWinners'); // 获取中奖用户列表
+```
 
  参数 | 说明 | 返回
 ----|------|----
