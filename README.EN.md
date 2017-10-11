@@ -66,7 +66,8 @@
         data: {},                                 // directly use userdata object (when use this, keep api empty)
         confetti: true,                           // show confetti effects
         showbtn: true,                            // show control button
-        fitsize: true                             // show all user in one screen
+        fitsize: true,                            // show all user in one screen
+        speed: 400                                // interval time to next candidate, the unit is ms
     });
 ```
 
@@ -82,7 +83,8 @@ data | directly use userdata object (when use this, keep api empty)  | null | Ob
 confetti | show confetti effects (if disable, confetti.js is not required)  | true | false
 showbtn | show control button  | true | false
 fitsize | fit user avatar size to show all user in one screen  | true | false
-  
+speed | interval time to next candidate, the unit is ms  | 350 | false
+
 ## API
 
 

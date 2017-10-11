@@ -12,11 +12,13 @@
     showbtn: true,
     el: "body",
     fitsize: true,
-
+    speed: 350,
     data: {},
     winners: {},
     $el: null
   }
+
+  var profileEls = {}
 
   var diceIconHtml = "<i class='dh-icon dh-icon-dice'>🎲<svg><use xlink:href='#dh-dice'/></svg></i>"
   var okayIconHtml = "<i class='dh-icon dh-icon-okay'>👌<svg><use xlink:href='#dh-okay'/></svg></i>"
@@ -216,30 +218,35 @@
 
   var getAllPosition = function() {
     return $.map($('.profile'), function(el, index) {
+      profileEls[index] = el
       return $(el).find('.avatar-image').first().position();
     });
   };
 
   var moveToTarget = function(target) {
+    $(".dh-lottery .profile.current").removeClass('current')
+    $(profileEls[target]).addClass('current')
     move('#dh-lottery-selector .image').x(positionList[target].left - 4).y(positionList[target].top - 4).ease('in-out').duration(200).end();
     return currentTarget = target;
   };
 
   var startLottery = function(){
     console.log('Lottery: started');
+    settings.$el.addClass('running-lottery')
     $('#dh-lottery-winner').removeClass('is-active');
     $('#dh-lottery-selector').show();
     lotteryInterval = setInterval(function() {
       var targetIndex = Math.floor(Math.random() * positionList.length);
       console.log('Lottery: moveToTarget #', targetIndex)
       return moveToTarget(targetIndex);
-    }, 350);
+    }, settings.speed);
     if(settings.timeout) lotteryTimeout = setTimeout(stopLottery, settings.timeout * 1000);
     $('#dh-lottery-go').removeClass('primary').addClass('success').html(okayIconHtml);
     return true;
   }
 
   var stopLottery = function(){
+    settings.$el.removeClass('running-lottery')
     console.log('Lottery: stoping...');
     var userId;
     clearTimeout(lotteryTimeout);

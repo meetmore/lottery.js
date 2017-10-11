@@ -64,7 +64,8 @@ Ready to go
         data: [],                                 // 直接传入抽奖者数据
         confetti: true,                           // 中奖时候显示小彩带动画
         showbtn: true,                            // 显示抽奖控制按钮
-        fitsize: true                             // 根据屏幕大小自动调整头像大小
+        fitsize: true,                            // 根据屏幕大小自动调整头像大小
+        speed: 400                                // 随机到下一个参与者的间隔时间，单位毫秒
     });
 ```
 
@@ -80,6 +81,7 @@ data | 直接传入用户对象（直接传入时请不要使用api参数）  | 
 confetti | 中奖时候显示小彩带动画（如果这里不启用，可以不引入confetti.js）  | true | false
 showbtn | 是否显示抽奖控制按钮  | true | false
 fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
+speed | 随机到下一个参与者的间隔时间，单位毫秒  | 350 | false
   
 ## API
 

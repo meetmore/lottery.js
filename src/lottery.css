@@ -58,6 +58,15 @@
 		display: none;
 	}
 
+.running-lottery .dh-lottery .profile{
+	opacity: 0.4;
+	transition: all 0.5s;
+}
+
+.running-lottery .dh-lottery .profile.current{
+	opacity: 1;
+}
+
 .dh-lottery canvas {
 	position: fixed;
 	left: 0;
