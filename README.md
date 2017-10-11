@@ -1,39 +1,39 @@
 ## Lottery.js
 
-🎲 一个简单的 JavaScript 抽奖应用，基于 Zepto 或 jQuery，快速便捷接入现有系统。
+🎲 A simple javascript lottery app.
 
-[English README](https://github.com/meetmore/lottery.js/blob/master/README.EN.md)  
+[Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.CN.md)  
 
-## 预览
+## Screenshots
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31418459-b21d6984-adfb-11e7-8fd8-7e9fc089ccfc.gif)
 
 ## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
    
-## 特性
- - 灵活的使用方法
- - 可定制的自定义信息
- - 风趣的小特效
+## Features
+ - Flexible
+ - Out of the box
+ - Interesting Animation Effects
    
-## 使用
+## Usage
 
-准备一个参与抽奖者的数据
-
- ```js
+ Prepare data like this
+ 
+```js
     [
         {
-            "avatar": "//example.com/avatar_1.jpg",    // 头像图片地址
-            "name": "MeetMore",                        // 名字
-            "data": {                                  // 该用户额外数据
-                "company": "MeetMore Inc.",
-                "title": "CEO",
-                ...
+            "avatar": "//example.com/avatar_1.jpg", 
+            "name": "MeetMore",
+            "data": {
+                "title": "Front-End Developer",
+                "company": "Little Apple",
+                ……
             }
         },
         ……
     ]
 ```
 
-在页面中引入 CSS 和 JS
+ import CSS/JS
 
 ```html
     <!-- Zepto or jQuery -->
@@ -43,67 +43,70 @@
     <script src="./lottery.compact.min.js"></script>
 ```
 
-Ready to go
+ Call function and Ready to go
+
 
 ```js
     $.lottery({ 
         api:"./api.json" 
     });
 ```
-  
-## 参数
+
+## Config
+
 
 ```js
     $.lottery({ 
-        el: ".lottery",                           // 在哪里输出抽奖的dom，使用jquery选择器
-        timeout: 10,                              // 抽奖自动停止时间（秒）
-        once: true,                               // 每人只能中奖一次（防止重复中奖）
-        title: "company",                         // 中奖界面显示的标题 data[key]
-        subtitle: "title",                        // 中奖界面显示的副标题 data[key]
-        api: "http://example.com/lottery.json",   // 抽奖者数据 API 地址（非必填，若填写则 data 参数将被忽略）
-        data: [],                                 // 直接传入抽奖者数据
-        confetti: true,                           // 中奖时候显示小彩带动画
-        showbtn: true,                            // 显示抽奖控制按钮
-        fitsize: true,                            // 根据屏幕大小自动调整头像大小
-        speed: 400                                // 随机到下一个参与者的间隔时间，单位毫秒
+        el: ".lottery",                           // where we put dom，jquery selector
+        timeout: 10,                              // time to auto stop（second）
+        once: true,                               // winner can not repeatable
+        title: "company",                         // the title will show in winner screen data[key]
+        subtitle: "title",                        // the subtitle will show in winner screen data[key]
+        api: 'http://example.com/lottery.json',   // API URL
+        data: {},                                 // directly use userdata object (when use this, keep api empty)
+        confetti: true,                           // show confetti effects
+        showbtn: true,                            // show control button
+        fitsize: true,                            // show all user in one screen
+        speed: 400                                // interval time to next candidate, the unit is ms
     });
 ```
 
- 参数 | 说明 | 默认值 | 可选值
+ Parameter | Explain | Default | Optional
 ----|------|----|----
-el | 在哪里输出抽奖的dom  | body | 使用jquery选择器，例如”.lottery“
-timeout | 抽奖自动停止时间（秒）  | null | 10（整数，秒）
-once | 每个人只能抽取一次（不可重复中奖）  | false | true - 启用
-title | 中奖界面显示的标题  | 用户name属性 | user['data'][**key**]（附加数据属性中key内容）
-subtitle | 中奖界面显示的副标题  | 用户company属性 | user['data'][**key**]（附加数据属性中key内容）
-api | 传入一个抽奖用户地址，json格式  | null | URL
-data | 直接传入用户对象（直接传入时请不要使用api参数）  | null | Object
-confetti | 中奖时候显示小彩带动画（如果这里不启用，可以不引入confetti.js）  | true | false
-showbtn | 是否显示抽奖控制按钮  | true | false
-fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
-speed | 随机到下一个参与者的间隔时间，单位毫秒  | 350 | false
-  
+el | where we put dom  | body | jquery selector，e.g.”.lottery“
+timeout | time to auto stop（second）  | null | 10 (int，second)
+once | winner can not repeatable  | false | true (enable)
+title | the title will show in winner screen  | user['name'] | user['data'][**key**] (key content in data fields)
+subtitle | the subtitle will show in winner screen  | user['company'] | user['data'][**key**] (key content in data fields)
+api | API JSON URL  | null | URL
+data | directly use userdata object (when use this, keep api empty)  | null | Object
+confetti | show confetti effects (if disable, confetti.js is not required)  | true | false
+showbtn | show control button  | true | false
+fitsize | fit user avatar size to show all user in one screen  | true | false
+speed | interval time to next candidate, the unit is ms  | 350 | false
+
 ## API
 
+
 ```js
-    $.lottery('start');      // 开始抽奖
-    $.lottery('stop');       // 停止抽奖
-    $.lottery('getUsers');   // 获取用户列表
-    $.lottery('getWinners'); // 获取中奖用户列表
+    $.lottery('start'); 
+    $.lottery('stop');
+    $.lottery('getUsers'); 
+    $.lottery('getWinners');
 ```
 
- 参数 | 说明 | 返回
+ Parameter | Explain | Return
 ----|------|----
-start | 开始抽奖 | true
-stop | 停止抽奖 | Object，中奖用户信息
-getUsers | 获取用户列表 | Object，用户列表
-getWinners | 获取中奖用户列表 | Object，中奖用户列表
+start | startLottery | true
+stop | stopLottery | Object，WinnerUser's info
+getUsers | get user list | Object，Userlist
+getWinners | get winners list | Object，Winnerslist
 
-## 浏览器支持
+## Browser Support
 
-- 现代浏览器
+- Modern Browser
    
-## 许可证
+## License
 
 Copyright © Duohui.co - Apache License 2.0
 
