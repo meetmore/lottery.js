@@ -1,7 +1,7 @@
 .dh-lottery {
 	margin: 0;
 	background: #333;
-    font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #4a4a4a;
     font-size: 16px;
     font-weight: 400;
@@ -27,10 +27,10 @@
 	}
 
 	.dh-icon > svg {
-		height: 52px;
-		width: 52px;
+		height: 64px;
+		width: 64px;
 		color: #FFC825;
-		margin: 14px;
+		margin: 18px;
 	}
 
 	.is-mac .dh-icon-dice {
@@ -180,7 +180,7 @@
 	width: 20px;
 	background: none;
 	height: 40px;
-	position: fixed;
+	position: absolute;
 	right: 20px;
 	top: 20px;
 	width: 40px;
@@ -223,7 +223,7 @@
 	display: -ms-flexbox;
 	display: flex;
 	opacity: 0;
-    position: fixed;
+    position: absolute;
     z-index: -1;
 	bottom: 0;
     left: 0;

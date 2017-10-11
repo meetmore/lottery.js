@@ -1,11 +1,11 @@
 ## Lottery.js
 
-🎲 一个简单的 Javascript 抽奖应用，基于 Zepto 或 jQuery，快速便捷接入现有系统。
+🎲 一个简单的 JavaScript 抽奖应用，基于 Zepto 或 jQuery，快速便捷接入现有系统。
 
 [English README](https://github.com/meetmore/lottery.js/blob/master/README.EN.md)  
 
 ## 预览
-![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
+![lottery-demo](https://user-images.githubusercontent.com/978810/31418459-b21d6984-adfb-11e7-8fd8-7e9fc089ccfc.gif)
 
 ## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
    

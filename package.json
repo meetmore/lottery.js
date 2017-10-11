@@ -9,11 +9,11 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp"
   },
-  "name": "lottery-screen.js",
-  "version": "1.0.0",
-  "description": "A web lottery screen that easy to use, base on Zepto or jQuery, with custom data support.",
+  "name": "lottery.js",
+  "version": "1.0.1",
+  "description": "A simple javascript lottery app。",
   "main": "dist/lottery.compact.min.js",
-  "repository": "git@github.com:meetmore/lotteryScreen.git",
+  "repository": "git@github.com:meetmore/lottery.js.git",
   "author": "NekoTora <i@flag.moe> Sun Liang <unstop01@gmail.com>",
   "license": "Apache License 2.0",
   "private": false

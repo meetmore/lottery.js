@@ -5,7 +5,7 @@
 [Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.md)  
 
 ## Screenshots
-![lottery-demo](https://user-images.githubusercontent.com/978810/31385319-78291854-ad88-11e7-895e-2b54a3819a6b.gif)
+![lottery-demo](https://user-images.githubusercontent.com/978810/31418459-b21d6984-adfb-11e7-8fd8-7e9fc089ccfc.gif)
 
 ## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
    

@@ -38,10 +38,10 @@
       </svg>\
     ");
 
-    var isMac = navigator.platform.toLowerCase().indexOf('mac') >= 0;
-    // isMac = false
+    var isAppleOs = navigator.platform && (navigator.platform.toLowerCase().indexOf('mac') >= 0 || /iPad|iPhone|iPod/.test(navigator.platform) );
+    // isAppleOs = false
     lotteryBoxEl = $("\
-      <div class='dh-lottery" + (isMac ? ' is-mac': '') + "'></div>\
+      <div class='dh-lottery" + (isAppleOs ? ' is-mac': '') + "'></div>\
     ");
     //中奖用户高亮
     var selector = $("\
@@ -66,7 +66,7 @@
     ");
     //中奖用户展示弹框
     var modal = $("\
-      <div class='dh-modal" + (isMac ? ' is-mac': '') + "' id='dh-lottery-winner'>\
+      <div class='dh-modal" + (isAppleOs ? ' is-mac': '') + "' id='dh-lottery-winner'>\
         <div class='dh-modal-background'></div>\
         <div class='dh-modal-content'>\
           <h1>" + crownIconHtml + "</h1>\
@@ -85,7 +85,7 @@
     lotteryBoxEl.append(container);
     if(settings.showbtn) lotteryBoxEl.append(btn);
     dom.append(lotteryBoxEl);
-    modal.appendTo('body');
+    dom.append(modal);
 
     //注册dom事件
     $('#dh-lottery-go').click(function() {
