@@ -108,7 +108,8 @@
 .dh-lottery .actions {
 	position: absolute;
 	right: 20px;
-	bottom: 20px
+	bottom: 20px;
+	display: flex;
 }
 
 .dh-lottery .actions .button {
@@ -120,6 +121,7 @@
 	border-radius: 80px;
 	font-size: 56px;
 	cursor: hand;
+	margin-right: 20px;
 }
 
 .dh-lottery .actions .button.primary{
@@ -168,7 +170,7 @@
     padding: 1vw;
 }
 
-.dh-modal-close {
+.dh-modal-close{
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -270,11 +272,18 @@
 	text-align: center;
 	margin: 0 auto;
     max-height: calc(100vh - 40px);
-    width: 640px;
+    width: 100%;
+}
+
+.dh-modal-content .profile-item{
+	width: 20vw;
+	display: inline-block;
+	font-size: 40px;
 }
 
 .dh-modal-content>h1 {
 	font-size: 128px;
+	display: inline-block;
 	z-index: 2;
 	position: relative;
 	transform: rotate(5deg);
@@ -318,4 +327,64 @@
 .dh-modal-close {
 	height: 86px;
 	width: 86px
+}
+
+#dh-lottery-history .dh-modal-content{
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 100%;
+	color: #fff;
+}
+
+#dh-lottery-history .dh-history-item{
+	padding: 20px;
+	border-bottom: solid 1px rgba(255, 255, 255, .3);
+}
+
+#dh-lottery-history .dh-history-item .dh-history-info{
+	text-align: left;
+}
+
+#dh-lottery-history .dh-history-item .dh-history-user{
+	width: 100%;
+	text-align: left;
+}
+
+#dh-lottery-history .dh-history-item .dh-history-user>div{
+	display: inline-block;
+	width: 18vw;
+	padding: 1vw;
+}
+
+#dh-lottery-history .dh-history-item .dh-history-user .avatar{
+	width: 10vw;
+	height: 10vw;
+	border-radius: 100%;
+}
+
+.dh-history-clean{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: none;
+	background-color: rgba(10, 10, 10, 0.7);
+	border: none;
+	border-radius: 290486px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1rem;
+	outline: none;
+	position: relative;
+	vertical-align: top;
+	position: absolute;
+	right: 120px;
+	top: 42px;
+	width: 100px;
+	height: 40px;
+	color: #fff;
+	border: 1px solid #fff;
 }
