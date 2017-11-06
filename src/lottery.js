@@ -355,10 +355,10 @@
     }, 700);
     lotteryInterval = null;
     $('#dh-lottery-go').removeClass('success').addClass('primary').html(diceIconHtml);
-    //保存中奖信息到中奖纪录
+    // 保存中奖信息到中奖纪录
     var history = {};
     history.time = (new Date()).toLocaleString();
-    //把获奖名单的数组转对象
+    // 把获奖名单的数组转对象
     history.winner = {};
     for (w in settings.winners) history.winner[w] = settings.winners[w];
     settings.winnerHistory.push(history);
