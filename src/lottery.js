@@ -138,7 +138,7 @@
     $("#dh-lottery-selector").html(el);
     setTimeout(function() {
       positionList = getAllPosition();
-      //return moveToTarget(0);
+      for (var i = 0; i < settings.number; i++) moveToTarget(i,0);
     }, 1000);
   }
 
@@ -292,7 +292,6 @@
 
   //使用选定的抽奖器抽取一个中奖用户
   var lotteryOnce = function(selector = 0){
-
     var targetIndex = Math.floor(Math.random() * positionList.length);
     //Math.random()>0.8? targetIndex =Math.floor(Math.random() * positionList.length): targetIndex =2;
     //去重，所有轮中无重复且当前轮无重复
@@ -301,7 +300,6 @@
       lotteryOnce(selector);
       return false;
     }
-    console.log('Lottery: moveToTarget #', targetIndex);
     moveToTarget(selector,targetIndex);
     currentTarget.push(targetIndex);
   }
@@ -317,7 +315,7 @@
       currentTarget = [];
       $(".dh-lottery .profile.current").removeClass('current');
       for (var i = 0; i < settings.number; i++)  lotteryOnce(i);
-      console.log(currentTarget);
+      console.log('Lottery: moveToTarget #', currentTarget);
     }, settings.speed);
     if(settings.timeout) lotteryTimeout = setTimeout(stopLottery, settings.timeout * 1000);
     $('#dh-lottery-go').removeClass('primary').addClass('success').html(okayIconHtml);
@@ -346,7 +344,7 @@
     if(currentTarget.length < 4) $(".dh-modal-content .profile-item").css('font-size','70px');
     if(currentTarget.length < 2) $(".dh-modal-content .profile-item").css('font-size','90px');
     clearInterval(lotteryInterval);
-    console.log(settings.winnerList);
+    console.log("Lottery: Ignore user #",settings.winnerList);
     if(settings.confetti){
       window.startConfetti();
       setTimeout(function() {
@@ -400,15 +398,16 @@
     ";
     var box = $("#dh-lottery-history .dh-modal-content");
     box.html("");
+    var history = settings.winnerHistory.reverse();
     //输出中奖纪录dom
-    for(var item in settings.winnerHistory){
-      var _this = settings.winnerHistory[item]
+    for(var item in history){
+      var _this = history[item]
       _this.number = arrayCount(_this.winner);
       _this.i = Number(item) + 1;
       var lottery_item = $(formatTemplate(_this, tpl_item));
       //输出中奖用户dom
       for(var user in _this.winner){
-        var _this = settings.winnerHistory[item]['winner'][user];
+        var _this = history[item]['winner'][user];
         var lottery_user = $(formatTemplate(_this, tpl_user));
         lottery_item.find(".dh-history-user").append(lottery_user);
       }
@@ -420,34 +419,41 @@
 
   //Controller
   var controller = {
-    //加载
+    // 加载
     init : function (options) { 
       settings = $.extend({},defaultOptions, options);
       settings.api != null ? loadApi(settings.api) : readyLottery();//如果api存在则读取api，否则使用data中数据
     },
-    //抽奖
+    // 抽奖
     start : function (){
       return startLottery();
     },
-    //停，返回中奖用户
+    // 停，返回中奖用户
     stop : function (){
       return stopLottery();
     },
-    //获取用户列表
+    // 获取用户列表
     getUsers : function(){
       return settings.data;
     },
-    //获取中奖用户
+    // 获取本轮中奖列表
     getWinners : function(){
       return settings.winners;
     },
+    // 清空中奖列表，将中奖者放回奖池
+    cleanWinners : function(){
+      settings.winnerList = [];
+      return true;
+    },
+    // 显示历史中奖记录
     showHistory : function(){
       return showHistory();
     },
-    //获取历史终将
+    // 获取历史中奖记录
     getHistory : function(){
       return settings.winnerHistory;
     },
+    // 清空历史中奖记录
     cleanHistory : function(){
       return cleanHistory();
     }
