@@ -239,7 +239,7 @@
   //缩放窗口时重新计算头像位置
   $(window).resize(function() {
     positionList = getAllPosition();
-    for(i in currentTarget) moveToTarget(i,currentTarget[i]);
+    for(var i in currentTarget) moveToTarget(i,currentTarget[i]);
     if(settings.fitsize) fitsize();
   });
 
@@ -360,7 +360,7 @@
     history.time = (new Date()).toLocaleString();
     // 把获奖名单的数组转对象
     history.winner = {};
-    for (w in settings.winners) history.winner[w] = settings.winners[w];
+    for (var w in settings.winners) history.winner[w] = settings.winners[w];
     settings.winnerHistory.push(history);
     localStorage.setItem('lotteryHistory',JSON.stringify(settings.winnerHistory));
     return winnerProfile;
@@ -398,13 +398,13 @@
     var box = $("#dh-lottery-history .dh-modal-content");
     box.html("");
     //输出中奖纪录dom
-    for(item in settings.winnerHistory){
+    for(var item in settings.winnerHistory){
       var _this = settings.winnerHistory[item]
       _this.number = arrayCount(_this.winner);
       _this.i = Number(item) + 1;
       var lottery_item = $(formatTemplate(_this, tpl_item));
       //输出中奖用户dom
-      for(user in _this.winner){
+      for(var user in _this.winner){
         var _this = settings.winnerHistory[item]['winner'][user];
         var lottery_user = $(formatTemplate(_this, tpl_user));
         lottery_item.find(".dh-history-user").append(lottery_user);
