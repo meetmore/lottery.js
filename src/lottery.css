@@ -272,49 +272,73 @@
 	text-align: center;
 	margin: 0 auto;
     max-height: calc(100vh - 40px);
-    width: 100%;
+	overflow-y: auto;
+	width: 90%;
+	padding: 5%;
 }
 
 .dh-modal-content .profile-item{
-	width: 20vw;
-	display: inline-block;
-	font-size: 40px;
+	box-sizing: border-box;
+	display: block;
+	font-size: 50px;
+	padding: 0.3em 5%;
+	text-align: left;
 }
 
-.dh-modal-content>h1 {
-	font-size: 128px;
+.dh-modal-content.dh-morewinner .profile-item{
+	width: 50%;
+	float: left;
+}
+
+.dh-modal-content .avatar-image{
+	float: left;
+	position: relative;
+	padding-right: 5%;
+}
+
+.dh-modal-content .avatar-image>h1 {
+	font-size: 2em;
 	display: inline-block;
 	z-index: 2;
-	position: relative;
+	position: absolute;
+	top: -20px;
+	right: 0;
 	transform: rotate(5deg);
 	overflow: hidden;
-	width: 160px;
-	margin: 0 auto;
-	padding-left: 20px;
-	margin-top: -40px
+	margin: 0;
+}
+
+.dh-modal-content .avatar-image svg{
+	width: 80px;
+	height: 80px;
 }
 
 .dh-modal-content .avatar-image>img {
-	width: 200px;
-	height: 200px;
-	border-radius: 128px;
-	margin-top: -72px;
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 100%;
 	border: 6px solid #FFC825;
 	box-sizing: content-box
 }
 
 .dh-modal-content .profile-name {
-	font-size: 64px;
+	font-size: 1em;
 	color: #eee;
 	margin: 16px 0;
 	font-weight: 600;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 
 .dh-modal-content .profile-subtitle {
 	color: #ddd;
-	font-size: 42px;
+	font-size: 0.75em;
 	margin: 12px 0;
 	font-weight: 600;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 
 .dh-modal-content .profile-desc {
@@ -322,6 +346,9 @@
 	font-size: 32px;
 	margin: 8px 0;
 	font-weight: 600;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 
 .dh-modal-close {
@@ -343,22 +370,30 @@
 
 #dh-lottery-history .dh-history-item .dh-history-info{
 	text-align: left;
+	padding-bottom: 20px;
+}
+
+#dh-lottery-history .dh-history-item .dh-history-info h1{
+	float: left;
+	padding-right: 20px;
+	font-size: 40px;
+    line-height: 48px;
 }
 
 #dh-lottery-history .dh-history-item .dh-history-user{
 	width: 100%;
-	text-align: left;
 }
 
 #dh-lottery-history .dh-history-item .dh-history-user>div{
 	display: inline-block;
-	width: 18vw;
 	padding: 1vw;
+	width: 180px;
+	text-align: center;
 }
 
 #dh-lottery-history .dh-history-item .dh-history-user .avatar{
-	width: 10vw;
-	height: 10vw;
+	width: 100px;
+	height: 100px;
 	border-radius: 100%;
 }
 

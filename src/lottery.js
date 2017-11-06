@@ -260,8 +260,8 @@
   var pushWinner = function(winnerProfile){
     var el = $("\
       <div class='profile-item'>\
-        <h1>" + crownIconHtml + "</h1>\
         <div class='avatar-image'>\
+          <h1>" + crownIconHtml + "</h1>\
           <img class='avatar' src='' alt='avatar' />\
         </div>\
         <h2 class='profile-name'></h2>\
@@ -339,6 +339,9 @@
       settings.winnerList[userId] = winnerProfile;//储存本轮中奖者到历史中奖者名单，以筛除重复中奖
       pushWinner(winnerProfile);
     }
+    //中奖者人数过多时改为双栏显示
+    $("#dh-lottery-winner .dh-modal-content").removeClass('dh-morewinner');
+    if(currentTarget.length > 4) $("#dh-lottery-winner .dh-modal-content").addClass('dh-morewinner');
     clearInterval(lotteryInterval);
     console.log(settings.winnerList);
     if(settings.confetti){
@@ -378,6 +381,7 @@
     var tpl_item = "\
       <div class='dh-history-item'>\
         <div class='dh-history-info'>\
+          <h1>{i}</h1>\
           <p>Time: {time}</p>\
           <p>Winner: {number}</p>\
         </div>\
@@ -397,6 +401,7 @@
     for(item in settings.winnerHistory){
       var _this = settings.winnerHistory[item]
       _this.number = arrayCount(_this.winner);
+      _this.i = Number(item) + 1;
       var lottery_item = $(formatTemplate(_this, tpl_item));
       //输出中奖用户dom
       for(user in _this.winner){
