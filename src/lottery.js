@@ -436,27 +436,42 @@
     getUsers : function(){
       return settings.data;
     },
-    // 获取本轮中奖列表
-    getWinners : function(){
-      return settings.winners;
+    winners : function(action){
+      switch (action) {
+        case 'get':
+          return settings.winners;
+          break;
+
+        case 'clean':
+          settings.winnerList = [];
+          return true;
+          break;
+
+        default:
+          console.error( 'Action ' +  action + ' does not exist.' );
+          break;
+      }
     },
-    // 清空中奖列表，将中奖者放回奖池
-    cleanWinners : function(){
-      settings.winnerList = [];
-      return true;
-    },
+
     // 显示历史中奖记录
-    showHistory : function(){
-      return showHistory();
+    history : function(action){
+      switch (action) {
+        case 'show':
+          return showHistory();
+          break;
+
+        case 'get':
+          return settings.winnerHistory;
+          break;
+
+        case 'clean':
+          return cleanHistory();
+      
+        default:
+          console.error( 'Action ' +  action + ' does not exist.' );
+          break;
+      }
     },
-    // 获取历史中奖记录
-    getHistory : function(){
-      return settings.winnerHistory;
-    },
-    // 清空历史中奖记录
-    cleanHistory : function(){
-      return cleanHistory();
-    }
   };
 
   $.lottery = function( method ) {
