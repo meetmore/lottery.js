@@ -328,10 +328,10 @@
     settings.$el.removeClass('running-lottery')
     console.log('Lottery: stoping...');
     clearTimeout(lotteryTimeout);
-    //清空中奖dom和本轮获奖者名单
+    // 清空中奖dom和本轮获奖者名单
     $("#dh-lottery-winner .dh-modal-content").html("");
     settings.winners = [];
-    //更新本轮中奖者信息，检查
+    // 更新本轮中奖者信息
     for (var i = 0; i < currentTarget.length; i++) {
       var winnerProfile = JSON.parse(decodeURIComponent($($('.profile')[currentTarget[i]]).data('profile')));
       var userId = winnerProfile['id'];
@@ -339,9 +339,12 @@
       settings.winnerList[userId] = winnerProfile;//储存本轮中奖者到历史中奖者名单，以筛除重复中奖
       pushWinner(winnerProfile);
     }
-    //中奖者人数过多时改为双栏显示
+    // 根据中奖者人数调整双栏布局和文字大小
     $("#dh-lottery-winner .dh-modal-content").removeClass('dh-morewinner');
+    $(".dh-modal-content .profile-item").css('font-size','50px');
     if(currentTarget.length > 4) $("#dh-lottery-winner .dh-modal-content").addClass('dh-morewinner');
+    if(currentTarget.length < 4) $(".dh-modal-content .profile-item").css('font-size','70px');
+    if(currentTarget.length < 2) $(".dh-modal-content .profile-item").css('font-size','90px');
     clearInterval(lotteryInterval);
     console.log(settings.winnerList);
     if(settings.confetti){
