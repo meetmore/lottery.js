@@ -67,7 +67,8 @@
         confetti: true,                           // show confetti effects
         showbtn: true,                            // show control button
         fitsize: true,                            // show all user in one screen
-        speed: 400                                // interval time to next candidate, the unit is ms
+        speed: 400,                               // interval time to next candidate, the unit is ms
+        number: 3                                 // how many winner will be get at one time
     });
 ```
 
@@ -84,6 +85,7 @@ confetti | show confetti effects (if disable, confetti.js is not required)  | tr
 showbtn | show control button  | true | false
 fitsize | fit user avatar size to show all user in one screen  | true | false
 speed | interval time to next candidate, the unit is ms  | 350 | false
+number | how many winner will be get at one time  | 1 | int
 
 ## API
 
@@ -92,7 +94,11 @@ speed | interval time to next candidate, the unit is ms  | 350 | false
     $.lottery('start'); 
     $.lottery('stop');
     $.lottery('getUsers'); 
-    $.lottery('getWinners');
+    $.lottery('winners', 'get');
+    $.lottery('winners', 'clean');
+    $.lottery('history', 'show');
+    $.lottery('history', 'get');
+    $.lottery('history', 'clean');
 ```
 
  Parameter | Explain | Return
@@ -100,8 +106,14 @@ speed | interval time to next candidate, the unit is ms  | 350 | false
 start | startLottery | true
 stop | stopLottery | Object，WinnerUser's info
 getUsers | get user list | Object，Userlist
-getWinners | get winners list | Object，Winnerslist
-
+winners, get | get winners list | Object，Winnerslist
+winners, clean | clean ignore user who has won | true
+history, show | show the history screen | true
+history, get | get history lottery list | Object，Historylist
+history, clean | clean history lottery list | true
+  
+**Winners will be lose after refeash page, History will be save at LocalStorage.**
+  
 ## Browser Support
 
 - Modern Browser

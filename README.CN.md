@@ -65,7 +65,8 @@ Ready to go
         confetti: true,                           // 中奖时候显示小彩带动画
         showbtn: true,                            // 显示抽奖控制按钮
         fitsize: true,                            // 根据屏幕大小自动调整头像大小
-        speed: 400                                // 随机到下一个参与者的间隔时间，单位毫秒
+        speed: 400,                               // 随机到下一个参与者的间隔时间，单位毫秒
+        number: 3                                 // 每轮的中奖人数
     });
 ```
 
@@ -82,14 +83,19 @@ confetti | 中奖时候显示小彩带动画（如果这里不启用，可以不
 showbtn | 是否显示抽奖控制按钮  | true | false
 fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
 speed | 随机到下一个参与者的间隔时间，单位毫秒  | 350 | false
+number | 一次抽出多少名中奖 | 1 | int
   
 ## API
 
 ```js
-    $.lottery('start');      // 开始抽奖
-    $.lottery('stop');       // 停止抽奖
-    $.lottery('getUsers');   // 获取用户列表
-    $.lottery('getWinners'); // 获取中奖用户列表
+    $.lottery('start'); 
+    $.lottery('stop');
+    $.lottery('getUsers'); 
+    $.lottery('winners', 'get');
+    $.lottery('winners', 'clean');
+    $.lottery('history', 'show');
+    $.lottery('history', 'get');
+    $.lottery('history', 'clean');
 ```
 
  参数 | 说明 | 返回
@@ -97,7 +103,13 @@ speed | 随机到下一个参与者的间隔时间，单位毫秒  | 350 | false
 start | 开始抽奖 | true
 stop | 停止抽奖 | Object，中奖用户信息
 getUsers | 获取用户列表 | Object，用户列表
-getWinners | 获取中奖用户列表 | Object，中奖用户列表
+winners, get | 获取中奖用户列表 | Object，中奖用户列表
+winners, clean | 清空已中奖用户信息（将已中奖者放回奖池） | true
+history, show | 显示抽奖历史 | true
+history, get | 获取抽奖历史 | Object，抽奖历史
+history, clean | 清空抽奖历史 | true
+  
+**中奖用户会在刷新页面后清空，抽奖历史会被储存在LocalStorage中不会被清空**
 
 ## 浏览器支持
 
