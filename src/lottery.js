@@ -24,6 +24,7 @@
   var profileEls = {}
 
   var diceIconHtml = "<i class='dh-icon dh-icon-dice'>🎲<svg><use xlink:href='#dh-dice'/></svg></i>"
+  var saveIconHtml = "<i class='dh-icon dh-icon-dice'>💾<svg><use xlink:href='#dh-save'/></svg></i>"
   var okayIconHtml = "<i class='dh-icon dh-icon-okay'>👌<svg><use xlink:href='#dh-okay'/></svg></i>"
   var crownIconHtml = "<i class='dh-icon dh-icon-crown'>👑<svg><use xlink:href='#dh-crown'/></svg></i>"
 
@@ -39,6 +40,9 @@
         </symbol>\
         <symbol id='dh-dice' viewBox='0 0 90 76'>\
           <path fill='currentColor' fill-rule='nonzero' d='M83.6 34.5c-1-.4-2.2 0-2.6 1-.4 1 0 2.3 1 2.7 4.4 1.7 4 3.2 3.6 4-.5 1.8-5.8 4-12.7 5.3l8.7-15.2c1.7-3 .7-6.7-2.3-8.4L39.7 1c-3-1.8-6.7-.7-8.5 2.2L10.8 38.6c-4.4-1.4-6.6-3-6.6-4 0-2 2.6-4.3 9.8-6 1-.2 1.8-1.3 1.6-2.4-.3-1-1.4-1.8-2.4-1.5C1.8 27.3.2 32 .2 34.5c0 7 14 9.5 21.7 10.4 0-.2 0-.3-.2-.5-.8-3 1-6 4-6.7 2.8-.8 5.8 1 6.6 4 .8 2.8-1 5.8-4 6.6-2 .6-4.3-.3-5.6-2-.5.5-1 .8-1.8.7-5.4-.4-9.8-1.3-13.3-2.4-.6 2.6.5 5.4 3 6.8l38.8 22.4s2.4 1.6 4.2 1.6c1.8 0 3.4-1.6 3.4-1.6.8-.4 1.3-1 1.7-1.8l10-17.2-6.3.3c-1 0-2-.6-2-1.5-.2-.2-.2-.4-.2-.6 9-.3 27-2.8 29.3-9.5 1-2.7.6-6.5-6-9zm-48-13.7c-1-3 1-6 3.8-6.7 3-.7 6 1 6.7 4 1 3-1 6-3.8 6.7-3 .7-6-1-6.7-4zm15 40.3c-3 1-6-.8-6.7-3.7-1-3 1-6 3.8-6.7 3-.8 6 1 6.7 3.8.8 3-1 6-4 6.7zm13.7-23.6c-3 .8-6-1-6.7-4-.8-2.8 1-5.8 4-6.6 2.8-.7 5.8 1 6.6 4 .8 2.8-1 5.8-4 6.6z'/>\
+        </symbol>\
+        <symbol id='dh-save' viewBox='-4 -4 32 32'>\
+          <path fill='currentColor' fill-rule='nonzero' d='M19 11h-14v-2h14v2zm0 2h-14v2h14v-2zm0 4h-14v2h14v-2zm3-11v16h-20v-16h20zm2-6h-24v24h24v-24z'/>\
         </symbol>\
       </svg>\
     ");
@@ -63,7 +67,7 @@
     //控制按钮
     var btn = $("\
       <div class='actions'>\
-        <a class='button primary' id='dh-history-show'>💾</a>\
+        <a class='button primary' id='dh-history-show'>" + saveIconHtml + "</a>\
         <a class='button primary' id='dh-lottery-go'>" + diceIconHtml + "</a>\
       </div>\
     ");
@@ -83,7 +87,12 @@
         <div class='dh-modal-content'>\
         </div>\
         <button class='dh-modal-close'></button>\
-        <button class='dh-history-clean'>Clean all</button>\
+        <button class='dh-history-clean dh-modal-btn'>Clean all</button>\
+        <div class='dh-modal-config-number' >\
+        <button class='dh-number-inc dh-modal-btn'>+</button>\
+        <div class='dh-number dh-modal-btn'>1</div>\
+        <button class='dh-number-dec dh-modal-btn'>-</button>\
+        </div>\
       </div>\
     ");
     lotteryBoxEl.append(svgIcons);
@@ -111,8 +120,30 @@
     $('#dh-lottery-history .dh-history-clean').click(function() {
       cleanHistory();
     });
+
+    $('#dh-lottery-history .dh-number-inc').click(function () {
+      if (settings.number < 10) {
+        settings.number += 1;
+        localStorage.setItem('lotteryConfigNumber', settings.number);
+        $('#dh-lottery-history .dh-number').text(settings.number);
+      }
+    });
+    $('#dh-lottery-history .dh-number').click(function () {
+      settings.number = 1;
+      localStorage.setItem('lotteryConfigNumber', settings.number);
+      $('#dh-lottery-history .dh-number').text(settings.number);
+    })
+    $('#dh-lottery-history .dh-number-dec').click(function () {
+      if (settings.number > 1) {
+        settings.number -= 1;
+        localStorage.setItem('lotteryConfigNumber', settings.number);
+        $('#dh-lottery-history .dh-number').text(settings.number);
+      }
+    });
+
     $('#dh-history-show').click(function() {
       showHistory();
+      $('#dh-lottery-history .dh-number').text(settings.number);
     });
     document.body.onkeydown = function(e) {
       if (e.keyCode == 27) {
@@ -138,8 +169,10 @@
     $("#dh-lottery-selector").html(el);
     setTimeout(function() {
       positionList = getAllPosition();
+      $('#dh-lottery-selector .image').show()
       for (var i = 0; i < settings.number; i++) moveToTarget(i,0);
     }, 1000);
+    if (settings.fitsize) fitsize();
   }
 
   //格式化模版
@@ -201,7 +234,6 @@
       item['id'] = index;  //为每个用户添加一个唯一id
       newUser(item);
     })
-    initSelector();
     console.log('Lottery: ' + settings.data.length + ' player');
     if(settings.fitsize) fitsize();
     if(settings.confetti) window.readyConfetti();
@@ -286,6 +318,7 @@
 
   var moveToTarget = function(i,target) {
     $(profileEls[target]).addClass('current');
+    if (!positionList[target]) return;
     move('#dh-lottery-selector #selector_'+i).x(positionList[target].left - 4).y(positionList[target].top - 4).ease('in-out').duration(200).end();
     return currentTarget;
   };
@@ -305,6 +338,7 @@
   }
 
   var startLottery = function(){
+    initSelector()
     //检查当每用户只能获奖一次时，是否有足够剩余用户参加抽奖
     if( settings.once && settings.data.length - arrayCount(settings.winnerList) < settings.number ){
       alert('No user left to participate in lottery.');
@@ -386,8 +420,7 @@
       <div class='dh-history-item'>\
         <div class='dh-history-info'>\
           <h1>{i}</h1>\
-          <p>Time: {time}</p>\
-          <p>Winner: {number}</p>\
+          <p>{time}</p>\
         </div>\
         <div class='dh-history-user'>\
         </div>\
@@ -426,6 +459,10 @@
     init : function (options) { 
       settings = $.extend({},defaultOptions, options);
       settings.api != null ? loadApi(settings.api) : readyLottery();//如果api存在则读取api，否则使用data中数据
+      // 若不指定抽奖人数，则尝试从 localStorage 中获取
+      if (!options.number && localStorage.lotteryConfigNumber) {
+        settings.number = parseInt(localStorage.lotteryConfigNumber) || 1
+      }
     },
     // 抽奖
     start : function (){

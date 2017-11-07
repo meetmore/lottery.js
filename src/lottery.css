@@ -50,9 +50,12 @@
 		height: 200px;
 		width: 120px;
 	}
+	.is-mac .button .dh-icon {
+		font-size: 58px;
+	}
 
 	.is-mac .dh-icon {
-		font-size: 1em;
+		font-size: 80px;
 	}
 	.is-mac .dh-icon > svg {
 		display: none;
@@ -94,6 +97,7 @@
 }
 
 #dh-lottery-selector .image {
+	display: none;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -293,24 +297,26 @@
 .dh-modal-content .avatar-image{
 	float: left;
 	position: relative;
-	padding-right: 5%;
+	margin-right: 5%;
 }
 
 .dh-modal-content .avatar-image>h1 {
-	font-size: 2em;
-	display: inline-block;
-	z-index: 2;
-	position: absolute;
-	top: -20px;
-	right: 0;
-	transform: rotate(5deg);
-	overflow: hidden;
-	margin: 0;
+    font-size: 2em;
+    display: inline-block;
+    z-index: 2;
+    position: absolute;
+    top: -64px;
+    left: 50%;
+    transform: rotate(5deg);
+    overflow: hidden;
+    margin: 0;
+    margin-left: -40px;
+    width: 100px;
 }
 
 .dh-modal-content .avatar-image svg{
-	width: 80px;
-	height: 80px;
+	width: 72px;
+	height: 72px;
 }
 
 .dh-modal-content .avatar-image>img {
@@ -324,7 +330,7 @@
 .dh-modal-content .profile-name {
 	font-size: 1em;
 	color: #eee;
-	margin: 16px 0;
+	margin: 0 0 16px 0;
 	font-weight: 600;
 	overflow: hidden;
 	text-overflow:ellipsis;
@@ -375,6 +381,10 @@
 	padding-bottom: 20px;
 }
 
+#dh-lottery-history .dh-history-item .dh-history-info p{
+	line-height: 48px;
+}
+
 #dh-lottery-history .dh-history-item .dh-history-info h1{
 	float: left;
 	padding-right: 20px;
@@ -399,14 +409,8 @@
 	border-radius: 100%;
 }
 
-.dh-history-clean{
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
+.dh-modal-btn{
 	user-select: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
 	background: none;
 	background-color: rgba(10, 10, 10, 0.7);
 	border: none;
@@ -417,11 +421,22 @@
 	outline: none;
 	position: relative;
 	vertical-align: top;
-	position: absolute;
-	right: 120px;
-	top: 42px;
 	width: 100px;
 	height: 40px;
 	color: #fff;
 	border: 1px solid #fff;
+	text-align: center;
+	line-height: 38px;
+}
+
+.dh-history-clean{
+	position: absolute;
+	right: 120px;
+	top: 42px;
+}
+
+.dh-modal-config-number{
+	position: absolute;
+	right: 250px;
+	top: 42px;
 }
