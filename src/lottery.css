@@ -278,11 +278,11 @@
 }
 
 .dh-modal-content .profile-item{
-	box-sizing: border-box;
 	display: block;
 	font-size: 50px;
 	padding: 0.3em 5%;
 	text-align: left;
+	min-height: 2.5em;
 }
 
 .dh-modal-content.dh-morewinner .profile-item{
@@ -329,6 +329,7 @@
 	overflow: hidden;
 	text-overflow:ellipsis;
 	white-space: nowrap;
+	min-height: 80px;
 }
 
 .dh-modal-content .profile-subtitle {
@@ -339,6 +340,7 @@
 	overflow: hidden;
 	text-overflow:ellipsis;
 	white-space: nowrap;
+	min-height: 60px;
 }
 
 .dh-modal-content .profile-desc {

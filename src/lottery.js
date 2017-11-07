@@ -306,7 +306,10 @@
 
   var startLottery = function(){
     //检查当每用户只能获奖一次时，是否有足够剩余用户参加抽奖
-    if( settings.once && settings.data.length - arrayCount(settings.winnerList) < settings.number ) alert('No user left to participate in lottery.');
+    if( settings.once && settings.data.length - arrayCount(settings.winnerList) < settings.number ){
+      alert('No user left to participate in lottery.');
+      return false;
+    }
     console.log('Lottery: started');
     settings.$el.addClass('running-lottery')
     $('#dh-lottery-winner').removeClass('is-active');
