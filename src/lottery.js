@@ -22,7 +22,7 @@
   }
 
   var profileEls = {}
-
+  var itemSideSize;
   var diceIconHtml = "<i class='dh-icon dh-icon-dice'>🎲<svg><use xlink:href='#dh-dice'/></svg></i>"
   var saveIconHtml = "<i class='dh-icon dh-icon-dice'>💾<svg><use xlink:href='#dh-save'/></svg></i>"
   var okayIconHtml = "<i class='dh-icon dh-icon-okay'>👌<svg><use xlink:href='#dh-okay'/></svg></i>"
@@ -172,7 +172,7 @@
       $('#dh-lottery-selector .image').show()
       for (var i = 0; i < settings.number; i++) moveToTarget(i,0);
     }, 1000);
-    if (settings.fitsize) fitsize();
+    if (settings.fitsize) setItemSize(itemSideSize);
   }
 
   //格式化模版
@@ -243,7 +243,7 @@
     //通过窗口预测一个合适大小
     var containerSize = settings.$el.height() * settings.$el.width();
     var number = settings.data.length;
-    var itemSideSize = Math.round(Math.sqrt(containerSize / number) / 1.2);
+    itemSideSize = Math.round(Math.sqrt(containerSize / number) / 1.2);
     setItemSize(itemSideSize);
     //如果溢出窗口面积则尝试减小
     while ( !(settings.$el.height() >= lotteryBoxEl.height()) || !(settings.$el.width() >= lotteryBoxEl.width()) ) {
@@ -272,7 +272,7 @@
   $(window).resize(function() {
     positionList = getAllPosition();
     for(var i in currentTarget) moveToTarget(i,currentTarget[i]);
-    if(settings.fitsize) fitsize();
+    if (settings.fitsize) fitsize();
   });
 
   var getAllPosition = function() {
@@ -325,9 +325,11 @@
 
   //使用选定的抽奖器抽取一个中奖用户
   var lotteryOnce = function(selector = 0){
+    if (positionList <=0 ) return;
     var targetIndex = Math.floor(Math.random() * positionList.length);
     //Math.random()>0.8? targetIndex =Math.floor(Math.random() * positionList.length): targetIndex =2;
     //去重，所有轮中无重复且当前轮无重复
+    
     if( (settings.once && settings.winnerList[targetIndex]) || $.inArray(targetIndex,currentTarget)>=0){
       console.log("Lottery: dup, next.");
       lotteryOnce(selector);

@@ -301,7 +301,7 @@
 }
 
 .dh-modal-content .avatar-image>h1 {
-    font-size: 2em;
+    font-size: 0;
     display: inline-block;
     z-index: 2;
     position: absolute;
