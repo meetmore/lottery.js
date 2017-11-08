@@ -2,6 +2,10 @@
 
 🎲 一个简单的 JavaScript 抽奖应用，基于 Zepto 或 jQuery，快速便捷接入现有系统。
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/6s5iGzH6BxpKb3dUFe3XDoT2/meetmore/lottery.js'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/6s5iGzH6BxpKb3dUFe3XDoT2/meetmore/lottery.js.svg' />
+</a>
+
 [English README](https://github.com/meetmore/lottery.js/blob/master/README.md)  
 
 ## 预览
@@ -124,7 +128,3 @@ Copyright © Duohui.co - Apache License 2.0
 - confetti.js is created by [Javier Sosa](http://jsfiddle.net/Javalsu/vxP5q/743/)
 - Icons are created by [Okay: Yasir B. Eryılmaz](https://thenounproject.com/term/okay/114615/), [Crown: Pundimon](https://thenounproject.com/term/crown/1028402), [Dice: davidyu](https://thenounproject.com/term/dice-point-4/1250653/) from the Noun Project
 - Move.js is created by [TJ Holowaychuk](https://visionmedia.github.io/move.js/)
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/6s5iGzH6BxpKb3dUFe3XDoT2/untsop/power'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/6s5iGzH6BxpKb3dUFe3XDoT2/untsop/power.svg' />
-</a>
