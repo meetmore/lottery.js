@@ -2,10 +2,6 @@
 
 🎲 A simple javascript lottery app.
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/6s5iGzH6BxpKb3dUFe3XDoT2/meetmore/lottery.js'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/6s5iGzH6BxpKb3dUFe3XDoT2/meetmore/lottery.js.svg' />
-</a>
-
 [Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.CN.md)  
 
 ## Screenshots
