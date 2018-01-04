@@ -1319,6 +1319,10 @@ map-cache@^0.2.0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
 
+material-avatar@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/material-avatar/-/material-avatar-0.3.5.tgz#956a84332c849586fd8d5acf09907715b50c2c97"
+
 micromatch@^2.3.7:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"

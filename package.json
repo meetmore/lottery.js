@@ -19,5 +19,8 @@
   "repository": "git@github.com:meetmore/lottery.js.git",
   "author": "NekoTora <i@flag.moe> Sun Liang <unstop01@gmail.com>",
   "license": "Apache License 2.0",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "material-avatar": "^0.3.5"
+  }
 }

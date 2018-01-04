@@ -7,7 +7,7 @@ var babel = require("gulp-babel");
 
 // Minifies JS
 gulp.task('compactJs', function(){
-    return gulp.src(['vendor/*.js', 'src/*.js'])
+  return gulp.src(['vendor/*.js', 'src/*.js', 'node_modules/material-avatar/material-avatar.js'])
     .pipe(babel())
     .pipe(uglify().on('error', function(err){
         console.log(err);

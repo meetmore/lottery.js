@@ -70,13 +70,37 @@
 	opacity: 1;
 }
 
-.dh-lottery canvas {
+.dh-lottery #canvas {
 	position: fixed;
 	left: 0;
 	top: 0;
 	z-index: 2333;
 	border: 0px solid #000;
 	pointer-events: none;
+}
+
+.dh-lottery .avatars-container{
+  height: 100%;
+  overflow: auto;
+  line-height: 0;
+}
+
+.dh-lottery .columns{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+
+.dh-lottery .column {
+  flex: 1 0 auto;
+  display: block;
+  flex-basis: 0;
+  flex-grow: 0;
+  flex-shrink: 1;
+  padding: 12px;
 }
 
 .dh-lottery .avatar {
@@ -87,7 +111,8 @@
 	margin: 0;
 	display: inline-block;
 	height: 128px;
-	width: 128px;
+  width: 128px;
+  position: relative;
 }
 
 .dh-lottery .avatar .image img {
@@ -200,7 +225,7 @@
 	top: 20px;
 	width: 40px;
   }
-  
+
   .dh-modal-close:before, .dh-modal-close:after {
 	background-color: white;
 	content: "";
@@ -213,25 +238,25 @@
 	-webkit-transform-origin: center center;
 			transform-origin: center center;
   }
-  
+
   .dh-modal-close:before {
 	height: 2px;
 	width: 50%;
   }
-  
+
   .dh-modal-close:after {
 	height: 50%;
 	width: 2px;
   }
-  
+
   .dh-modal-close:hover, .dh-modal-close:focus {
 	background-color: rgba(10, 10, 10, 0.3);
   }
-  
+
   .dh-modal-close:active {
 	background-color: rgba(10, 10, 10, 0.4);
   }
-  
+
 
   .dh-modal {
 	display: -webkit-box;
@@ -287,6 +312,16 @@
 	padding: 0.3em 5%;
 	text-align: left;
 	min-height: 2.5em;
+}
+
+.dh-modal-content.dh-solowinner .profile-item{
+  text-align: center;
+}
+
+.dh-modal-content.dh-solowinner .avatar-image{
+  text-align: center;
+  float: none;
+  margin: 0;
 }
 
 .dh-modal-content.dh-morewinner .profile-item{
@@ -439,4 +474,64 @@
 	position: absolute;
 	right: 250px;
 	top: 42px;
+}
+
+
+@keyframes dh-stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dh-scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes dh-fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
+@keyframes dh-zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.dh-zoomIn {
+  animation-name: dh-zoomIn;
+}
+
+@keyframes dh-zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.dh-zoomOut {
+  animation-name: dh-zoomOut;
+}
+
+.dh-animated {
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
 }

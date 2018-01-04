@@ -10,7 +10,6 @@
     confetti: true,
     showbtn: true,
     el: "body",
-    fitsize: true,
     speed: 350,
     data: {},
     winners: [],
@@ -19,6 +18,10 @@
     number: 1,
     _round: 0,
     $el: null
+  }
+
+  var avatarOptions = {
+    shape: 'circle',
   }
 
   var profileEls = {}
@@ -73,7 +76,7 @@
     ");
     //中奖用户展示弹框
     var modal = $("\
-      <div class='dh-modal" + (isAppleOs ? ' is-mac': '') + "' id='dh-lottery-winner'>\
+      <div class='dh-animated dh-modal" + (isAppleOs ? ' is-mac': '') + "' id='dh-lottery-winner'>\
         <div class='dh-modal-background'></div>\
         <div class='dh-modal-content'>\
         </div>\
@@ -153,6 +156,21 @@
         if ($('#dh-lottery-winner').hasClass('is-active')) return;
         return $('#dh-lottery-go').click();
       }
+      if (e.keyCode == 70) {
+        function launchFullscreen(element) {
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+          } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+          } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullScreen();
+          }
+        }
+
+        launchFullscreen(document.documentElement);
+      }
     };
   }
 
@@ -172,20 +190,19 @@
       $('#dh-lottery-selector .image').show()
       for (var i = 0; i < settings.number; i++) moveToTarget(i,0);
     }, 1000);
-    if (settings.fitsize) setItemSize(itemSideSize);
   }
 
   //格式化模版
-  var formatTemplate = function(data, tmpl) {  
-    var format = {  
-        name: function(x) {  
-          return x ; 
-        }  
-    };  
-    return tmpl.replace(/{(\w+)}/g, function(m1, m2) {  
-        if (!m2)  
-          return "";  
-        return (format && format[m2]) ? format[m2](data[m2]) : data[m2];  
+  var formatTemplate = function(data, tmpl) {
+    var format = {
+        name: function(x) {
+          return x ;
+        }
+    };
+    return tmpl.replace(/{(\w+)}/g, function(m1, m2) {
+        if (!m2)
+          return "";
+        return (format && format[m2]) ? format[m2](data[m2]) : data[m2];
     });
   }
 
@@ -196,9 +213,14 @@
         <div class='profile' data-profile='{json}'>\
             <div class='profile__parent'>\
                 <div class='profile__wrapper'>\
-                    <div class='profile__content'>\
-                        <div class='avatar'><span class='image avatar-image is-128x128'><img src='{avatar}' alt='avatar'/></span></div>\
-                    </div>\
+                    <div class='profile__content'>" + (function(){
+                      if (item.avatar) {
+                        return "<div class='avatar'><span class='image avatar-image is-128x128'><img src='{avatar}' alt='avatar' /></span></div>"
+                      } else {
+                        return "<div class='avatar'><span class='image dh-name-avatar avatar-image is-128x128'>{name}</span></div>"
+                      }
+                    })()
+                    + "</div>\
                 </div>\
             </div>\
         </div>\
@@ -234,24 +256,9 @@
       item['id'] = index;  //为每个用户添加一个唯一id
       newUser(item);
     })
+    MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
     console.log('Lottery: ' + settings.data.length + ' player');
-    if(settings.fitsize) fitsize();
     if(settings.confetti) window.readyConfetti();
-  }
-
-  var fitsize = function(){
-    //通过窗口预测一个合适大小
-    var containerSize = settings.$el.height() * settings.$el.width();
-    var number = settings.data.length;
-    itemSideSize = Math.round(Math.sqrt(containerSize / number) / 1.2);
-    setItemSize(itemSideSize);
-    //如果溢出窗口面积则尝试减小
-    while ( !(settings.$el.height() >= lotteryBoxEl.height()) || !(settings.$el.width() >= lotteryBoxEl.width()) ) {
-      if (itemSideSize < 10) break;
-      itemSideSize = itemSideSize - 2;
-      setItemSize(itemSideSize);
-    }
-    getAllPosition();
   }
 
   //设置元素大小
@@ -261,7 +268,7 @@
     $("#dh-lottery-selector .image").css('height',itemSideSize+'px');
     $("#dh-lottery-selector .image").css('width',itemSideSize+'px');
   }
-  
+
   var positionList = [];
   var currentTarget = [];
   var winnerProfile = [];
@@ -272,7 +279,6 @@
   $(window).resize(function() {
     positionList = getAllPosition();
     for(var i in currentTarget) moveToTarget(i,currentTarget[i]);
-    if (settings.fitsize) fitsize();
   });
 
   var getAllPosition = function() {
@@ -329,7 +335,7 @@
     var targetIndex = Math.floor(Math.random() * positionList.length);
     //Math.random()>0.8? targetIndex =Math.floor(Math.random() * positionList.length): targetIndex =2;
     //去重，所有轮中无重复且当前轮无重复
-    
+
     if( (settings.once && settings.winnerList[targetIndex]) || $.inArray(targetIndex,currentTarget)>=0){
       console.log("Lottery: dup, next.");
       lotteryOnce(selector);
@@ -337,28 +343,6 @@
     }
     moveToTarget(selector,targetIndex);
     currentTarget.push(targetIndex);
-  }
-
-  var startLottery = function(){
-    initSelector()
-    //检查当每用户只能获奖一次时，是否有足够剩余用户参加抽奖
-    if( settings.once && settings.data.length - arrayCount(settings.winnerList) < settings.number ){
-      alert('No user left to participate in lottery.');
-      return false;
-    }
-    console.log('Lottery: started');
-    settings.$el.addClass('running-lottery')
-    $('#dh-lottery-winner').removeClass('is-active');
-    $('#dh-lottery-selector').show();
-    lotteryInterval = setInterval(function() {
-      currentTarget = [];
-      $(".dh-lottery .profile.current").removeClass('current');
-      for (var i = 0; i < settings.number; i++)  lotteryOnce(i);
-      console.log('Lottery: moveToTarget #', currentTarget);
-    }, settings.speed);
-    if(settings.timeout) lotteryTimeout = setTimeout(stopLottery, settings.timeout * 1000);
-    $('#dh-lottery-go').removeClass('primary').addClass('success').html(okayIconHtml);
-    return true;
   }
 
   var stopLottery = function(){
@@ -377,11 +361,15 @@
       pushWinner(winnerProfile);
     }
     // 根据中奖者人数调整双栏布局和文字大小
-    $("#dh-lottery-winner .dh-modal-content").removeClass('dh-morewinner');
+    $("#dh-lottery-winner .dh-modal-content").removeClass('dh-morewinner').removeClass('dh-solowinner');
+
     $(".dh-modal-content .profile-item").css('font-size','50px');
     if(currentTarget.length > 4) $("#dh-lottery-winner .dh-modal-content").addClass('dh-morewinner');
     if(currentTarget.length < 4) $(".dh-modal-content .profile-item").css('font-size','70px');
-    if(currentTarget.length < 2) $(".dh-modal-content .profile-item").css('font-size','90px');
+    if (currentTarget.length < 2) {
+      $(".dh-modal-content .profile-item").css('font-size', '90px');
+      $("#dh-lottery-winner .dh-modal-content").addClass('dh-solowinner');
+    }
     clearInterval(lotteryInterval);
     console.log("Lottery: Ignore user #",settings.winnerList);
     if(settings.confetti){
@@ -391,7 +379,7 @@
       }, 1500);
     }
     setTimeout(function() {
-      return $('#dh-lottery-winner').addClass('is-active');
+      return $('#dh-lottery-winner').addClass('is-active').addClass('dh-zoomIn');
     }, 700);
     lotteryInterval = null;
     $('#dh-lottery-go').removeClass('success').addClass('primary').html(diceIconHtml);
@@ -404,6 +392,31 @@
     settings.winnerHistory.push(history);
     localStorage.setItem('lotteryHistory',JSON.stringify(settings.winnerHistory));
     return winnerProfile;
+  }
+
+  var startLottery = function () {
+    initSelector()
+    //检查当每用户只能获奖一次时，是否有足够剩余用户参加抽奖
+    if (settings.once && settings.data.length - arrayCount(settings.winnerList) < settings.number) {
+      alert('No user left to participate in lottery.');
+      return false;
+    }
+    console.log('Lottery: started');
+    settings.$el.addClass('running-lottery')
+    $('#dh-lottery-winner').removeClass('is-active');
+    $('#dh-lottery-selector').show();
+    console.log("$('#dh-lottery-selector').show();")
+    var runLottery = function () {
+      currentTarget = [];
+      $(".dh-lottery .profile.current").removeClass('current');
+      for (var i = 0; i < settings.number; i++)  lotteryOnce(i);
+      console.log('Lottery: moveToTarget #', currentTarget);
+    }
+    runLottery()
+    lotteryInterval = setInterval(runLottery, settings.speed);
+    if (settings.timeout) lotteryTimeout = setTimeout(stopLottery, settings.timeout * 1000);
+    $('#dh-lottery-go').removeClass('primary').addClass('success').html(okayIconHtml);
+    return true;
   }
 
   var cleanHistory = function(){
@@ -458,7 +471,7 @@
   //Controller
   var controller = {
     // 加载
-    init : function (options) { 
+    init : function (options) {
       settings = $.extend({},defaultOptions, options);
       settings.api != null ? loadApi(settings.api) : readyLottery();//如果api存在则读取api，否则使用data中数据
       // 若不指定抽奖人数，则尝试从 localStorage 中获取
@@ -508,7 +521,7 @@
 
         case 'clean':
           return cleanHistory();
-      
+
         default:
           console.error( 'Action ' +  action + ' does not exist.' );
           break;
@@ -523,7 +536,7 @@
       return controller.init.apply( this, arguments );
     } else {
       console.error( 'Method ' +  method + ' does not exist.' );
-    }    
-  }; 
-  
+    }
+  };
+
 })();
