@@ -2,26 +2,30 @@
 
 🎲 A simple javascript lottery app.
 
-[Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.CN.md)  
+[Chinese README](https://github.com/meetmore/lottery.js/blob/master/README.CN.md)
+
+## Sponsor
+
+- [多会](https://www.duohui.co/?utm_source=lottery.js&utm_medium=web&utm_campaign=lottery-github)
 
 ## Screenshots
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31418459-b21d6984-adfb-11e7-8fd8-7e9fc089ccfc.gif)
 
 ## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
-   
+
 ## Features
  - Flexible
  - Out of the box
  - Interesting Animation Effects
-   
+
 ## Usage
 
  Prepare data like this
- 
+
 ```js
     [
         {
-            "avatar": "//example.com/avatar_1.jpg", 
+            "avatar": "//example.com/avatar_1.jpg",
             "name": "MeetMore",
             "data": {
                 "title": "Front-End Developer",
@@ -47,8 +51,8 @@
 
 
 ```js
-    $.lottery({ 
-        api:"./api.json" 
+    $.lottery({
+        api:"./api.json"
     });
 ```
 
@@ -56,7 +60,7 @@
 
 
 ```js
-    $.lottery({ 
+    $.lottery({
         el: ".lottery",                           // where we put dom，jquery selector
         timeout: 10,                              // time to auto stop（second）
         once: true,                               // winner can not repeatable
@@ -66,7 +70,6 @@
         data: {},                                 // directly use userdata object (when use this, keep api empty)
         confetti: true,                           // show confetti effects
         showbtn: true,                            // show control button
-        fitsize: true,                            // show all user in one screen
         speed: 400,                               // interval time to next candidate, the unit is ms
         number: 3                                 // how many winner will be get at one time
     });
@@ -83,7 +86,6 @@ api | API JSON URL  | null | URL
 data | directly use userdata object (when use this, keep api empty)  | null | Object
 confetti | show confetti effects (if disable, confetti.js is not required)  | true | false
 showbtn | show control button  | true | false
-fitsize | fit user avatar size to show all user in one screen  | true | false
 speed | interval time to next candidate, the unit is ms  | 350 | false
 number | how many winner will be get at one time  | 1 | int
 
@@ -91,9 +93,9 @@ number | how many winner will be get at one time  | 1 | int
 
 
 ```js
-    $.lottery('start'); 
+    $.lottery('start');
     $.lottery('stop');
-    $.lottery('getUsers'); 
+    $.lottery('getUsers');
     $.lottery('winners', 'get');
     $.lottery('winners', 'clean');
     $.lottery('history', 'show');
@@ -111,13 +113,13 @@ winners, clean | clean ignore user who has won | true
 history, show | show the history screen | true
 history, get | get history lottery list | Object，Historylist
 history, clean | clean history lottery list | true
-  
+
 **Winners will be lose after refeash page, History will be save at LocalStorage.**
-  
+
 ## Browser Support
 
 - Modern Browser
-   
+
 ## License
 
 Copyright © Duohui.co - Apache License 2.0

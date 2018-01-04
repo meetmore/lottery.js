@@ -2,18 +2,22 @@
 
 🎲 一个简单的 JavaScript 抽奖应用，基于 Zepto 或 jQuery，快速便捷接入现有系统。
 
-[English README](https://github.com/meetmore/lottery.js/blob/master/README.md)  
+[English README](https://github.com/meetmore/lottery.js/blob/master/README.md)
+
+## 赞助商
+
+- [多会](https://www.duohui.co/?utm_source=lottery.js&utm_medium=web&utm_campaign=lottery-github)
 
 ## 预览
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31418459-b21d6984-adfb-11e7-8fd8-7e9fc089ccfc.gif)
 
 ## [LiveDemo ->](https://meetmore.github.io/lottery.js/)
-   
+
 ## 特性
  - 灵活的使用方法
  - 可定制的自定义信息
  - 风趣的小特效
-   
+
 ## 使用
 
 准备一个参与抽奖者的数据
@@ -46,15 +50,15 @@
 Ready to go
 
 ```js
-    $.lottery({ 
-        api:"./api.json" 
+    $.lottery({
+        api:"./api.json"
     });
 ```
-  
+
 ## 参数
 
 ```js
-    $.lottery({ 
+    $.lottery({
         el: ".lottery",                           // 在哪里输出抽奖的dom，使用jquery选择器
         timeout: 10,                              // 抽奖自动停止时间（秒）
         once: true,                               // 每人只能中奖一次（防止重复中奖）
@@ -64,7 +68,6 @@ Ready to go
         data: [],                                 // 直接传入抽奖者数据
         confetti: true,                           // 中奖时候显示小彩带动画
         showbtn: true,                            // 显示抽奖控制按钮
-        fitsize: true,                            // 根据屏幕大小自动调整头像大小
         speed: 400,                               // 随机到下一个参与者的间隔时间，单位毫秒
         number: 3                                 // 每轮的中奖人数
     });
@@ -81,16 +84,15 @@ api | 传入一个抽奖用户地址，json格式  | null | URL
 data | 直接传入用户对象（直接传入时请不要使用api参数）  | null | Object
 confetti | 中奖时候显示小彩带动画（如果这里不启用，可以不引入confetti.js）  | true | false
 showbtn | 是否显示抽奖控制按钮  | true | false
-fitsize | 尽可能在一屏中显示所有抽奖者  | true | false
 speed | 随机到下一个参与者的间隔时间，单位毫秒  | 350 | false
 number | 一次抽出多少名中奖 | 1 | int
-  
+
 ## API
 
 ```js
-    $.lottery('start'); 
+    $.lottery('start');
     $.lottery('stop');
-    $.lottery('getUsers'); 
+    $.lottery('getUsers');
     $.lottery('winners', 'get');
     $.lottery('winners', 'clean');
     $.lottery('history', 'show');
@@ -108,13 +110,13 @@ winners, clean | 清空已中奖用户信息（将已中奖者放回奖池） | 
 history, show | 显示抽奖历史 | true
 history, get | 获取抽奖历史 | Object，抽奖历史
 history, clean | 清空抽奖历史 | true
-  
+
 **中奖用户会在刷新页面后清空，抽奖历史会被储存在LocalStorage中不会被清空**
 
 ## 浏览器支持
 
 - 现代浏览器
-   
+
 ## 许可证
 
 Copyright © Duohui.co - Apache License 2.0
