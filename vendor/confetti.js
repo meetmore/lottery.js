@@ -1,9 +1,9 @@
 window.requestAnimFrame = (function () {
-  return window.requestAnimationFrame || 
-  window.webkitRequestAnimationFrame || 
-  window.mozRequestAnimationFrame || 
-  window.oRequestAnimationFrame || 
-  window.msRequestAnimationFrame || 
+  return window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.oRequestAnimationFrame ||
+  window.msRequestAnimationFrame ||
   function (callback) {
       return window.setTimeout(callback, 1000 / 60);
   };
@@ -71,7 +71,7 @@ window.requestAnimFrame = (function () {
     window.startConfetti = RestartConfetti
 
     function SetGlobals() {
-        canvas = document.getElementById("canvas");
+        canvas = document.getElementById("dh-confetti-canvas");
         ctx = canvas.getContext("2d");
         W = window.innerWidth;
         H = window.innerHeight;

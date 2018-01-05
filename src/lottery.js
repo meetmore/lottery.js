@@ -63,7 +63,7 @@
     //用户列表容器
     var container = $("\
       <div class='main-container'>\
-        <canvas id='canvas'></canvas>\
+        <canvas id='dh-confetti-canvas'></canvas>\
         <div class='userlist columns is-multiline is-mobile'></div>\
       </div>\
     ");
@@ -300,7 +300,7 @@
       <div class='profile-item'>\
         <div class='avatar-image'>\
           <h1>" + crownIconHtml + "</h1>\
-          <img class='avatar' src='' alt='avatar' />\
+          <div class='avatar'><span class='image avatar-image'><img src='' alt='avatar' /></span></div>\
         </div>\
         <h2 class='profile-name'></h2>\
         <h3 class='profile-subtitle'></h3>\
@@ -309,17 +309,30 @@
     ")
     var cardSubTitle, cardTitle, cardDesc;
     if (winnerProfile) {
-      el.find('.avatar').attr('src', winnerProfile['avatar']);
+
       if (winnerProfile['data'] && Object.keys(winnerProfile['data']).length > 0) {
         cardTitle = winnerProfile['data'][settings.title];
         cardSubTitle = winnerProfile['data'][settings.subtitle];
         cardDesc = winnerProfile['data'][settings.desc];
       }
-      el.find('.profile-name').text(cardTitle || winnerProfile['name'] );
-      el.find('.profile-subtitle').text(cardSubTitle || winnerProfile['company']);
-      el.find('.profile-desc').text(cardDesc || '');
+
+      var profileName = cardTitle || winnerProfile['name']
+      var profileSubtitle = cardSubTitle || winnerProfile['company']
+      var profileDesc = cardDesc || ""
+
+      if (winnerProfile['avatar']) {
+        el.find('.avatar-image img').attr('src', winnerProfile['avatar']);
+      } else {
+        el.find('.avatar-image img').remove();
+        el.find('.avatar-image').addClass('dh-name-avatar').text(profileName)
+      }
+
+      el.find('.profile-name').text(profileName);
+      el.find('.profile-subtitle').text(profileSubtitle);
+      el.find('.profile-desc').text(profileDesc);
     }
     $("#dh-lottery-winner .dh-modal-content").append(el);
+    MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
   }
 
   var moveToTarget = function(i,target) {
