@@ -112,7 +112,7 @@
 }
 
 .dh-lottery .avatar .image {
-	margin: 0;
+	margin: 0 auto;
 	display: inline-block;
 	height: 128px;
   width: 128px;
@@ -304,16 +304,22 @@
 .dh-modal-content {
 	text-align: center;
 	margin: 0 auto;
-    max-height: calc(100vh - 40px);
+  max-height: calc(100vh - 40px);
 	overflow-y: auto;
 	width: 90%;
-	padding: 5%;
+  padding: 5%;
+  display: flex;
+  flex-flow: column;
+}
+
+.dh-modal-content.dh-morewinner {
+  flex-flow: row wrap;
 }
 
 .dh-modal-content .profile-item{
 	display: block;
 	font-size: 50px;
-	padding: 0.3em 5%;
+	padding: 2vh 5%;
 	text-align: left;
 	min-height: 2.5em;
 }
@@ -330,7 +336,8 @@
 
 .dh-modal-content.dh-morewinner .profile-item{
 	width: 50%;
-	float: left;
+  float: left;
+  box-sizing: border-box;
 }
 
 .dh-modal-content .avatar-image{
@@ -339,6 +346,11 @@
   margin-right: 5%;
   width: 256px;
   height: 256px;
+}
+
+.dh-modal-content.dh-morewinner .avatar-image{
+  width: 142px;
+  height: 142px;
 }
 
 .dh-modal-content .avatar-image>h1 {
@@ -445,9 +457,11 @@
 }
 
 #dh-lottery-history .dh-history-item .dh-history-user .avatar{
-	width: 100px;
-	height: 100px;
 	border-radius: 100%;
+}
+
+.dh-history-user .avatar .avatar-image{
+  float: none;
 }
 
 .dh-modal-btn{

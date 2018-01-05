@@ -192,48 +192,31 @@
     }, 1000);
   }
 
-  //格式化模版
-  var formatTemplate = function(data, tmpl) {
-    var format = {
-        name: function(x) {
-          return x ;
-        }
-    };
-    return tmpl.replace(/{(\w+)}/g, function(m1, m2) {
-        if (!m2)
-          return "";
-        return (format && format[m2]) ? format[m2](data[m2]) : data[m2];
-    });
-  }
-
-  //新建用户dom
-  var newUser = function(item){
-    var template = "\
-      <div class='column'>\
-        <div class='profile' data-profile='{json}'>\
-            <div class='profile__parent'>\
-                <div class='profile__wrapper'>\
-                    <div class='profile__content'>" + (function(){
-                      if (item.avatar) {
-                        return "<div class='avatar'><span class='image avatar-image is-128x128'><img src='{avatar}' alt='avatar' /></span></div>"
-                      } else {
-                        return "<div class='avatar'><span class='image dh-name-avatar avatar-image is-128x128'>{name}</span></div>"
-                      }
-                    })()
-                    + "</div>\
-                </div>\
-            </div>\
-        </div>\
-      </div>\
-    ";
-    item['json'] = encodeURIComponent(JSON.stringify(item));
-    var html = formatTemplate(item,template);
+  var appendNewUserToList = function(item){
+    var html = `
+      <div class="column">
+        <div class="profile" data-profile="${encodeURIComponent(JSON.stringify(item))}">
+          <div class="profile__parent">
+              <div class="profile__wrapper">
+                <div class="profile__content">` + (function(){
+                  if (item.avatar) {
+                    return `<div class="avatar"><span class="image avatar-image is-128x128"><img src="${item.avatar}" alt="avatar" /></span></div`
+                  } else {
+                    return `<div class="avatar"><span class="image dh-name-avatar avatar-image is-128x128">${item.data[settings.title] || item.name}</span></div>`
+                  }
+                })()
+                + `</div>
+              </div>
+          </div>
+        </div>
+      </div>
+    `;
     return $(".userlist").append(html);
   }
 
   var loadApi = function(){
     $.ajax({
-      type: 'GET',
+      type: "GET",
       url: settings.api,
       dataType: 'json',
       success: function(data){
@@ -253,10 +236,10 @@
     if(localStorage.getItem('lotteryHistory')) settings.winnerHistory = JSON.parse(localStorage.getItem('lotteryHistory'));
     initDom(settings.$el);
     $.each(settings.data, function(index,item){
-      item['id'] = index;  //为每个用户添加一个唯一id
-      newUser(item);
+      item['id'] = index;
+      appendNewUserToList(item);
     })
-    MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
+    new MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
     console.log('Lottery: ' + settings.data.length + ' player');
     if(settings.confetti) window.readyConfetti();
   }
@@ -296,17 +279,17 @@
 
   //新增中奖者dom
   var pushWinner = function(winnerProfile){
-    var el = $("\
-      <div class='profile-item'>\
-        <div class='avatar-image'>\
-          <h1>" + crownIconHtml + "</h1>\
-          <div class='avatar'><span class='image avatar-image'><img src='' alt='avatar' /></span></div>\
-        </div>\
-        <h2 class='profile-name'></h2>\
-        <h3 class='profile-subtitle'></h3>\
-        <h4 class='profile-desc'></h4>\
-      </div>\
-    ")
+    var el = $(`
+      <div class='profile-item'>
+        <div class='avatar-image'>
+          <h1>${crownIconHtml}</h1>
+          <div class='avatar'><span class='image avatar-image'><img src='' alt='avatar' /></span></div>
+        </div>
+        <h2 class='profile-name'></h2>
+        <h3 class='profile-subtitle'></h3>
+        <h4 class='profile-desc'></h4>
+      </div>
+    `)
     var cardSubTitle, cardTitle, cardDesc;
     if (winnerProfile) {
 
@@ -332,7 +315,7 @@
       el.find('.profile-desc').text(profileDesc);
     }
     $("#dh-lottery-winner .dh-modal-content").append(el);
-    MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
+    new MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
   }
 
   var moveToTarget = function(i,target) {
@@ -377,7 +360,7 @@
     $("#dh-lottery-winner .dh-modal-content").removeClass('dh-morewinner').removeClass('dh-solowinner');
 
     $(".dh-modal-content .profile-item").css('font-size','50px');
-    if(currentTarget.length > 4) $("#dh-lottery-winner .dh-modal-content").addClass('dh-morewinner');
+    if(currentTarget.length > 3) $("#dh-lottery-winner .dh-modal-content").addClass('dh-morewinner');
     if(currentTarget.length < 4) $(".dh-modal-content .profile-item").css('font-size','70px');
     if (currentTarget.length < 2) {
       $(".dh-modal-content .profile-item").css('font-size', '90px');
@@ -392,7 +375,7 @@
       }, 1500);
     }
     setTimeout(function() {
-      return $('#dh-lottery-winner').addClass('is-active').addClass('dh-zoomIn');
+      return $('#dh-lottery-winner').addClass('is-active');
     }, 700);
     lotteryInterval = null;
     $('#dh-lottery-go').removeClass('success').addClass('primary').html(diceIconHtml);
@@ -444,22 +427,28 @@
   }
 
   var showHistory = function(){
-    var tpl_item = "\
-      <div class='dh-history-item'>\
-        <div class='dh-history-info'>\
-          <h1>{i}</h1>\
-          <p>{time}</p>\
-        </div>\
-        <div class='dh-history-user'>\
-        </div>\
-      </div>\
-    ";
-    var tpl_user = "\
-      <div>\
-          <img class='avatar' src='{avatar}'>\
-          <h3 class='name'>{name}</h3>\
-      </div>\
-    ";
+    var tplItem = function(data) { return `
+      <div class='dh-history-item'>
+        <div class='dh-history-info'>
+          <h1>${data.i}</h1>
+          <p>${data.time}</p>
+        </div>
+        <div class='dh-history-user'>
+        </div>
+      </div>
+    `};
+    var tplUser = function (data) { return `
+      <div>
+        ` + (function () {
+          if (data.avatar) {
+            return `<div class="avatar"><span class="image avatar-image is-128x128"><img src="${data.avatar}" alt="avatar" /></span></div`
+          } else {
+            return `<div class="avatar"><span class="image dh-name-avatar avatar-image is-128x128">${data.data[settings.title] || data.name}</span></div>`
+          }
+        })() + `
+        <h3 class='name'>${data.data[settings.title] || data.name}</h3>
+      </div>
+    `};
     var box = $("#dh-lottery-history .dh-modal-content");
     box.html("");
     var history = settings.winnerHistory.reverse();
@@ -468,16 +457,17 @@
       var _this = history[item]
       _this.number = arrayCount(_this.winner);
       _this.i = Number(item) + 1;
-      var lottery_item = $(formatTemplate(_this, tpl_item));
+      var lottery_item = $(tplItem(_this));
       //输出中奖用户dom
       for(var user in _this.winner){
         var _this = history[item]['winner'][user];
-        var lottery_user = $(formatTemplate(_this, tpl_user));
+        var lottery_user = $(tplUser(_this));
         lottery_item.find(".dh-history-user").append(lottery_user);
       }
       box.append(lottery_item);
     }
     $("#dh-lottery-history").addClass("is-active");
+    new MaterialAvatar(document.getElementsByClassName('dh-name-avatar'), avatarOptions);
     return settings.winnerHistory;
   }
 

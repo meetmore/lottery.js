@@ -7,9 +7,11 @@ var babel = require("gulp-babel");
 
 // Minifies JS
 gulp.task('compactJs', function(){
-  return gulp.src(['vendor/*.js', 'src/*.js', 'node_modules/material-avatar/material-avatar.js'])
+  return gulp.src(['vendor/*.js', 'src/*.js'])
     .pipe(babel())
-    .pipe(uglify().on('error', function(err){
+    .pipe(uglify({
+      mangle: {keep_fnames: true,}
+    }).on('error', function(err){
         console.log(err);
         this.emit('end');
     }))

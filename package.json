@@ -13,14 +13,11 @@
     "build": "./node_modules/.bin/gulp"
   },
   "name": "lottery.js",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A simple javascript lottery app。",
   "main": "dist/lottery.compact.min.js",
   "repository": "git@github.com:meetmore/lottery.js.git",
   "author": "NekoTora <i@flag.moe> Sun Liang <unstop01@gmail.com>",
   "license": "Apache License 2.0",
-  "private": false,
-  "dependencies": {
-    "material-avatar": "^0.3.5"
-  }
+  "private": false
 }
