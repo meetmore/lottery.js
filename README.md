@@ -6,7 +6,14 @@
 
 ## Sponsor
 
-- [多会](https://www.duohui.co/?utm_source=lottery.js&utm_medium=web&utm_campaign=lottery-github)
+<div valign="middle">
+  <a href="https://www.duotai.net/?utm_source=lottery.js&utm_medium=web&utm_campaign=lottery-github">
+    <img src="https://user-images.githubusercontent.com/978810/34824409-447c85e8-f709-11e7-813d-41c9e7f919fe.png" alt="多态" height="180" />
+  </a>
+  <a href="https://www.duohui.co/?utm_source=lottery.js&utm_medium=web&utm_campaign=lottery-github">
+    <img src="https://user-images.githubusercontent.com/978810/34824476-8fc7f4ce-f709-11e7-8f53-b10fdced0038.png" height="180" alt="多会" />
+  </a>
+</div>
 
 ## Screenshots
 ![lottery-demo](https://user-images.githubusercontent.com/978810/31418459-b21d6984-adfb-11e7-8fd8-7e9fc089ccfc.gif)
